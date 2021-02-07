@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container is-fullhd">
       <div class="navbar-brand">
-        <span class="title is-3 is-size-4-mobile">
+        <span class="title is-3 is-size-4-mobile ml-3">
           Die Hackerinnen Liste
         </span>
       </div>
@@ -26,7 +26,7 @@
   <div v-if="enabledRows.length > 0" class="container is-fullhd pt-5">
     <div class="columns">
       <div v-if="showFilter" class="column">
-        <Filter :open="showFilter" @close="toggleFilter" />
+        <Filter :open="showFilter" @close="toggleFilter" @updated="onFilter" />
       </div>
       <div :class="['column', showFilter ? 'is-two-thirds' : 'is-full']">
         <List :data="enabledRows" />
@@ -58,6 +58,7 @@ export default {
   data: function() {
     return {
       data: [],
+      filteredData: [],
       showFilter: true,
     };
   },
@@ -81,6 +82,15 @@ export default {
         console.log(error);
       }
     },
+    onFilter: function(selection) {
+      // filter keys (meetup, newsletter)
+      this.filteredData = this.enabledRows.filter((item) => {
+        console.log(selection);
+        if (item[selection.key]) {
+          return true;
+        }
+      });
+    },
   },
   computed: {
     enabledRows: function() {
@@ -91,6 +101,7 @@ export default {
       //change row data into object
       return enabledRows.map((row) => {
         // ignore row[0]
+        // meetup
         return {
           title: row[1],
           color: row[2],
@@ -116,7 +127,6 @@ export default {
 </script>
 
 <style lang="scss">
-// $title-color: white;
 $box-shadow: 0 0.1em 0.5em -0.125em rgb(10 10 10 / 10%),
   0 0px 0 1px rgb(10 10 10 / 2%);
 @import "./../node_modules/bulma/bulma.sass";
