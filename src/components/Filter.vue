@@ -1,76 +1,76 @@
 <template>
-  <div v-if="open" class="sidebar">
+  <div v-if="open" class="sidebar has-background-primary has-text-left">
     <div class="content p-4">
-      <button class="delete" @click="$emit('close')"></button>
-      <h1 class="title">Filter</h1>
-
-      <p>
-        Ich möchte Coding-Initiativen kennenlernen, Intiativen auf Social Media
-        folgen, YouTube Channels abonnieren, programmieren lernen, Technik
-        verstehen, an Meetups teilnehmen, networken, Hackerinnen treffen,
-        Hackerspaces besuchen, Newsletter abonnieren, mentorn, vernetzen
-      </p>
-
-      <h2 class="subtitle">Ich suche:</h2>
+      <button class="delete is-pulled-right" @click="$emit('close')"></button>
+      <h2 class="subtitle is-size-6 mb-3 has-text-white">
+        Interessen
+      </h2>
       <div class="tags are-medium">
-        <span class="tag is-primary is-light is-rounded">Meetups</span>
-        <span class="tag is-primary is-light is-rounded">Konferenzen</span>
-        <span class="tag is-primary is-light is-rounded">Initiativen</span>
-        <span class="tag is-primary is-light is-rounded">Hackspaces</span>
-        <span class="tag is-primary is-light is-rounded">Workshops</span>
-        <span class="tag is-primary is-light is-rounded">Mentor sein</span>
-        <span class="tag is-primary is-light is-rounded"
-          >Andere Hackerinnen</span
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Meetups</span
         >
-        <span class="tag is-primary is-light is-rounded">Networken</span>
-        <span class="tag is-primary is-light is-rounded">Coden lernen</span>
-        <span class="tag is-primary is-light is-rounded"
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Konferenzen</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Initiativen</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Hackspaces</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Workshops</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Mentor/in sein</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Hackerinnen</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Networken</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Programmieren lernen</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
           >Technik verstehen</span
         >
-        <span class="tag is-primary is-light is-rounded">Bücher</span>
-        <span class="tag is-primary is-light is-rounded">Lernen</span>
-        <span class="tag is-primary is-light is-rounded">Unterstützen</span>
-        <span class="tag is-primary is-light is-rounded"
-          >Suche Angebote für Frauen</span
-        >
-        <span class="tag is-primary is-light is-rounded"
-          >Newsletter abonnieren</span
+        <span class="tag is-primary is-light is-rounded is-normal">Bücher</span>
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Unterstützen</span
         >
       </div>
 
-      <h2 class="subtitle">Ich folge:</h2>
+      <h2 class="subtitle is-size-6 mb-3 has-text-white">
+        Format
+      </h2>
       <div class="tags are-medium">
-        <span class="tag is-primary is-light is-rounded">
+        <span class="tag is-primary is-light is-rounded is-normal">
           <span class="icon mr-1">
-            <i class="fab fa-facebook"></i>
+            <i class="fas fa-blog"></i>
           </span>
-          Facebook
+          Blog
         </span>
-        <span class="tag is-primary is-light is-rounded">
+        <span class="tag is-primary is-light is-rounded is-normal">
           <span class="icon mr-1">
-            <i class="fab fa-twitter"></i>
+            <i class="fas fa-inbox"></i>
           </span>
-          Twitter
+          Newsletter
         </span>
-        <span class="tag is-primary is-light is-rounded">
-          <span class="icon mr-1">
-            <i class="fab fa-instagram"></i>
-          </span>
-          Instagram
-        </span>
-        <span class="tag is-primary is-light is-rounded">
-          <span class="icon mr-1">
-            <i class="fab fa-youtube"></i>
-          </span>
-          YouTube
-        </span>
-        <span class="tag is-primary is-light is-rounded">
+        <span class="tag is-primary is-light is-rounded is-normal">
           <span class="icon mr-1">
             <i class="fab fa-telegram"></i>
           </span>
           Telegram Gruppen
         </span>
-        <span class="tag is-primary is-light is-rounded">
+        <span class="tag is-primary is-light is-rounded is-normal">
+          <span class="icon mr-1">
+            <i class="fab fa-youtube"></i>
+          </span>
+          YouTube
+        </span>
+        <span class="tag is-primary is-light is-rounded is-normal">
           <span class="icon mr-1">
             <i class="fab fa-tiktok"></i>
           </span>
@@ -78,11 +78,43 @@
         </span>
       </div>
 
-      <h2 class="subtitle">Ich bin:</h2>
+      <h2 class="subtitle is-size-6 mb-3 has-text-white">
+        Social Media
+      </h2>
       <div class="tags are-medium">
-        <span class="tag is-primary is-light is-rounded">Schüler</span>
-        <span class="tag is-primary is-light is-rounded">Student</span>
-        <span class="tag is-primary is-light is-rounded">Älter als 16</span>
+        <span class="tag is-primary is-light is-rounded is-normal">
+          <span class="icon mr-1">
+            <i class="fab fa-twitter"></i>
+          </span>
+          Twitter
+        </span>
+        <span class="tag is-primary is-light is-rounded is-normal">
+          <span class="icon mr-1">
+            <i class="fab fa-facebook"></i>
+          </span>
+          Facebook
+        </span>
+        <span class="tag is-primary is-light is-rounded is-normal">
+          <span class="icon mr-1">
+            <i class="fab fa-instagram"></i>
+          </span>
+          Instagram
+        </span>
+      </div>
+
+      <h2 class="subtitle is-size-6 mb-3 has-text-white">
+        Zielgruppe
+      </h2>
+      <div class="tags are-medium">
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Schüler</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Student</span
+        >
+        <span class="tag is-primary is-light is-rounded is-normal"
+          >Über 16</span
+        >
       </div>
     </div>
   </div>
@@ -104,8 +136,7 @@ export default {
 <style lang="scss" scoped>
 .sidebar {
   width: 100%;
-  height: 100vh;
-  background-color: #00d1b2;
+  border-radius: 12px;
 
   .tag {
     cursor: pointer;

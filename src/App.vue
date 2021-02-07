@@ -1,28 +1,48 @@
 <template>
-  <nav
-    class="navbar is-fixed-top"
-    role="navigation"
-    aria-label="main navigation"
-  >
+  <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container is-fullhd">
+      <div class="navbar-brand">
+        <span class="title is-3 is-size-4-mobile">
+          Die Hackerinnen Liste
+        </span>
+      </div>
       <div class="navbar-start">
-        <h1 class="title">Hackerinnen List</h1>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link is-arrowless">
+            <i class="far fa-question-circle is-medium has-text-primary"></i>
+          </a>
+          <div class="navbar-dropdown p-3" style="width: 200px;">
+            Hallo! Schön das hier bist.
+          </div>
+        </div>
       </div>
       <div class="navbar-end">
-        <span class="button is-primary" @click="toggleFilter">Filter</span>
-        <span class="button is-secondary">Neu</span>
+        <span class="button is-primary" @click="toggleFilter">
+          <i class="fas fa-filter mr-2"></i>Filter</span
+        >
       </div>
     </div>
   </nav>
-  <div class="container is-fullhd">
+  <div v-if="enabledRows.length > 0" class="container is-fullhd pt-5">
     <div class="columns">
-      <div class="column is-two-thirds">
-        <List :data="enabledRows" />
-      </div>
-      <div class="column">
+      <div v-if="showFilter" class="column">
         <Filter :open="showFilter" @close="toggleFilter" />
       </div>
+      <div :class="['column', showFilter ? 'is-two-thirds' : 'is-full']">
+        <List :data="enabledRows" />
+      </div>
     </div>
+  </div>
+  <div v-else class="pt-5">
+    Loading...
+  </div>
+  <div class="container">
+    <p class="p-4 is-size-7">
+      Coding-Initiativen kennenlernen, auf Social Media folgen, YouTube Channels
+      abonnieren, programmieren lernen, Technik verstehen, an Meetups
+      teilnehmen, networken, Hackerinnen treffen, Hackerspaces besuchen,
+      Newsletter abonnieren, vernetzen, Frauen und Technik, MINT
+    </p>
   </div>
 </template>
 
@@ -39,7 +59,7 @@ export default {
   data: function() {
     return {
       data: [],
-      showFilter: false,
+      showFilter: true,
     };
   },
   mounted() {
@@ -74,7 +94,7 @@ export default {
         // ignore row[0]
         return {
           title: row[1],
-          logo: row[2],
+          color: row[2],
           description: row[3],
           tags: row[4],
           website: row[5],
@@ -102,12 +122,18 @@ $box-shadow: 0 0.1em 0.5em -0.125em rgb(10 10 10 / 10%),
   0 0px 0 1px rgb(10 10 10 / 2%);
 @import "./../node_modules/bulma/bulma.sass";
 
-#app {
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: $primary;
+  background-color: rgba(0, 209, 178, 0.06);
+  min-height: 100vh;
+}
+
+#app {
+  margin-top: 52px;
 }
 </style>
