@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import VueGapi from 'vue-gapi'
+import '@fortawesome/fontawesome-free/js/all.js';
 
 const app = createApp(App)
 

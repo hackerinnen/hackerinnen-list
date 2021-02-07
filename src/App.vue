@@ -1,10 +1,10 @@
 <template>
-  <div class="container is-fluid">
-    <nav
-      class="navbar is-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
+  <nav
+    class="navbar is-fixed-top"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <div class="container is-fullhd">
       <div class="navbar-start">
         <h1 class="title">Hackerinnen List</h1>
       </div>
@@ -12,11 +12,17 @@
         <span class="button is-primary" @click="toggleFilter">Filter</span>
         <span class="button is-secondary">Neu</span>
       </div>
-    </nav>
-
-    <List :data="enabledRows" />
-
-    <Filter :open="showFilter" @close="toggleFilter" />
+    </div>
+  </nav>
+  <div class="container is-fullhd">
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <List :data="enabledRows" />
+      </div>
+      <div class="column">
+        <Filter :open="showFilter" @close="toggleFilter" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -70,19 +76,19 @@ export default {
           title: row[1],
           logo: row[2],
           description: row[3],
-          tags: row[3],
-          website: row[4],
-          facebook: row[5],
-          twitter: row[6],
-          instagram: row[7],
-          newsletter: row[8],
-          youtube: row[9],
-          twitch: row[10],
-          tiktok: row[11],
-          telegram: row[12],
-          email: row[13],
-          region: row[14],
-          cities: row[15],
+          tags: row[4],
+          website: row[5],
+          facebook: row[6],
+          twitter: row[7],
+          instagram: row[8],
+          newsletter: row[9],
+          youtube: row[10],
+          twitch: row[11],
+          tiktok: row[12],
+          telegram: row[13],
+          email: row[14],
+          region: row[15],
+          cities: row[16],
         };
       });
     },

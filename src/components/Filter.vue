@@ -1,6 +1,6 @@
 <template>
   <div v-if="open" class="sidebar">
-    <div class="content">
+    <div class="content p-4">
       <button class="delete" @click="$emit('close')"></button>
       <h1 class="title">Filter</h1>
 
@@ -27,9 +27,11 @@
         <span class="tag is-primary is-light is-rounded"
           >Technik verstehen</span
         >
+        <span class="tag is-primary is-light is-rounded">Bücher</span>
+        <span class="tag is-primary is-light is-rounded">Lernen</span>
         <span class="tag is-primary is-light is-rounded">Unterstützen</span>
         <span class="tag is-primary is-light is-rounded"
-          >Suche Frauenangebote</span
+          >Suche Angebote für Frauen</span
         >
         <span class="tag is-primary is-light is-rounded"
           >Newsletter abonnieren</span
@@ -39,15 +41,41 @@
       <h2 class="subtitle">Ich folge:</h2>
       <div class="tags are-medium">
         <span class="tag is-primary is-light is-rounded">
-          <span class="icon"> <i class="fas fa-arrow-right"></i> </span
-          >Facebook</span
-        >
-        <span class="tag is-primary is-light is-rounded">Twitter</span>
-        <span class="tag is-primary is-light is-rounded">Instagram</span>
-        <span class="tag is-primary is-light is-rounded">YouTube</span>
-        <span class="tag is-primary is-light is-rounded">Linkedin</span>
-        <span class="tag is-primary is-light is-rounded">Telegram</span>
-        <span class="tag is-primary is-light is-rounded">TikTok</span>
+          <span class="icon mr-1">
+            <i class="fab fa-facebook"></i>
+          </span>
+          Facebook
+        </span>
+        <span class="tag is-primary is-light is-rounded">
+          <span class="icon mr-1">
+            <i class="fab fa-twitter"></i>
+          </span>
+          Twitter
+        </span>
+        <span class="tag is-primary is-light is-rounded">
+          <span class="icon mr-1">
+            <i class="fab fa-instagram"></i>
+          </span>
+          Instagram
+        </span>
+        <span class="tag is-primary is-light is-rounded">
+          <span class="icon mr-1">
+            <i class="fab fa-youtube"></i>
+          </span>
+          YouTube
+        </span>
+        <span class="tag is-primary is-light is-rounded">
+          <span class="icon mr-1">
+            <i class="fab fa-telegram"></i>
+          </span>
+          Telegram Gruppen
+        </span>
+        <span class="tag is-primary is-light is-rounded">
+          <span class="icon mr-1">
+            <i class="fab fa-tiktok"></i>
+          </span>
+          TikTok
+        </span>
       </div>
 
       <h2 class="subtitle">Ich bin:</h2>
@@ -75,10 +103,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 500px;
+  width: 100%;
   height: 100vh;
   background-color: #00d1b2;
 
