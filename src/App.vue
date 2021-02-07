@@ -30,19 +30,18 @@
       </div>
       <div :class="['column', showFilter ? 'is-two-thirds' : 'is-full']">
         <List :data="enabledRows" />
+
+        <p class="p-4 is-size-7">
+          Coding-Initiativen kennenlernen, auf Social Media folgen, YouTube
+          Channels abonnieren, programmieren lernen, Technik verstehen, an
+          Meetups teilnehmen, networken, Hackerinnen treffen, Hackerspaces
+          besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT
+        </p>
       </div>
     </div>
   </div>
   <div v-else class="pt-5">
     Loading...
-  </div>
-  <div class="container">
-    <p class="p-4 is-size-7">
-      Coding-Initiativen kennenlernen, auf Social Media folgen, YouTube Channels
-      abonnieren, programmieren lernen, Technik verstehen, an Meetups
-      teilnehmen, networken, Hackerinnen treffen, Hackerspaces besuchen,
-      Newsletter abonnieren, vernetzen, Frauen und Technik, MINT
-    </p>
   </div>
 </template>
 
