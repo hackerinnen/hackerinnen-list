@@ -26,10 +26,14 @@
   <div v-if="enabledRows.length > 0" class="container is-fullhd pt-5">
     <div class="columns">
       <div v-if="showFilter" class="column">
-        <Filter :open="showFilter" @close="toggleFilter" @updated="onFilter" />
+        <Filter
+          :open="showFilter"
+          @close="toggleFilter"
+          @updated="onFilterChange"
+        />
       </div>
       <div :class="['column', showFilter ? 'is-two-thirds' : 'is-full']">
-        <List :data="enabledRows" />
+        <List :data="filteredRows" />
 
         <p class="p-4 is-size-7">
           Coding-Initiativen kennenlernen, auf Social Media folgen, YouTube
@@ -48,6 +52,7 @@
 <script>
 import List from "@/components/List.vue";
 import Filter from "@/components/Filter.vue";
+import { pick, omitBy, isEmpty } from "lodash";
 
 export default {
   name: "App",
@@ -58,7 +63,7 @@ export default {
   data: function() {
     return {
       data: [],
-      filteredData: [],
+      selection: [],
       showFilter: true,
     };
   },
@@ -82,14 +87,8 @@ export default {
         console.log(error);
       }
     },
-    onFilter: function(selection) {
-      // filter keys (meetup, newsletter)
-      this.filteredData = this.enabledRows.filter((item) => {
-        console.log(selection);
-        if (item[selection.key]) {
-          return true;
-        }
-      });
+    onFilterChange: function(selection) {
+      this.selection = selection;
     },
   },
   computed: {
@@ -120,6 +119,22 @@ export default {
           region: row[15],
           cities: row[16],
         };
+      });
+    },
+    filteredRows: function() {
+      // only show rows that have keys (e.g. meetup, newsletter) that match the selection keys
+      return this.enabledRows.filter((row) => {
+        // get selected Keys
+        const selectedKeys = this.selection.map((item) => {
+          return item.key;
+        });
+        console.log(selectedKeys);
+        // omit empty keys
+        const rowWithoutEmpty = omitBy(row, isEmpty);
+        // check if row has keys that match selected Keys
+        console.log(pick(rowWithoutEmpty, selectedKeys));
+        // if (rowWithoutEmpty.pick(selectedKeys))
+        return true;
       });
     },
   },
