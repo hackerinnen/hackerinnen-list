@@ -52,7 +52,7 @@
 <script>
 import List from "@/components/List.vue";
 import Filter from "@/components/Filter.vue";
-import { pick, omitBy, isEmpty } from "lodash";
+import { pick, keys, omitBy, isEmpty } from "lodash";
 
 export default {
   name: "App",
@@ -90,6 +90,34 @@ export default {
     onFilterChange: function(selection) {
       this.selection = selection;
     },
+    matchKeys: function(rows, filterKeys) {
+      return rows.filter((row) => {
+        if (filterKeys.length < 1) {
+          return true;
+        }
+        // omit empty keys
+        const rowWithoutEmpty = omitBy(row, isEmpty);
+        // check if row has keys that match filterKeys
+        if (keys(pick(rowWithoutEmpty, filterKeys)).length > 0) {
+          return true;
+        }
+        return false;
+      });
+    },
+    matchTags: function(rows, filterKeys) {
+      //todo
+      return rows.filter((row) => {
+        if (filterKeys.length < 1) {
+          return true;
+        }
+        const tags = row.tags;
+        console.log(tags);
+        if (keys(pick(tags, filterKeys)).length > 0) {
+          return true;
+        }
+        return false;
+      });
+    },
   },
   computed: {
     enabledRows: function() {
@@ -122,20 +150,11 @@ export default {
       });
     },
     filteredRows: function() {
-      // only show rows that have keys (e.g. meetup, newsletter) that match the selection keys
-      return this.enabledRows.filter((row) => {
-        // get selected Keys
-        const selectedKeys = this.selection.map((item) => {
-          return item.key;
-        });
-        console.log(selectedKeys);
-        // omit empty keys
-        const rowWithoutEmpty = omitBy(row, isEmpty);
-        // check if row has keys that match selected Keys
-        console.log(pick(rowWithoutEmpty, selectedKeys));
-        // if (rowWithoutEmpty.pick(selectedKeys))
-        return true;
+      const selectionKeys = this.selection.map((item) => {
+        return item.key;
       });
+      return this.matchKeys(this.enabledRows, selectionKeys);
+      // return this.matchTags(rows, selectionKeys);
     },
   },
 };

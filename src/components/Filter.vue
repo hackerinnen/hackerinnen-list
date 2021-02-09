@@ -158,12 +158,18 @@ export default {
           selected: false,
         },
         {
-          key: "tiktok",
-          title: "TikTok",
-          icon: "fab fa-tiktok",
+          key: "twitch",
+          title: "Twitch",
+          icon: "fab fa-twitch",
           selected: false,
         },
-        { key: "books", title: "Books", icon: "fas fa-book", selected: false },
+        // {
+        //   key: "tiktok",
+        //   title: "TikTok",
+        //   icon: "fab fa-tiktok",
+        //   selected: false,
+        // },
+        { key: "books", title: "Book", icon: "fas fa-book", selected: false },
       ],
       social: [
         {
