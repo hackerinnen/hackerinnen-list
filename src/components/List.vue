@@ -20,14 +20,19 @@
                 <br />
                 {{ entry.description }}
                 <br />
-                <small
-                  ><a
+                <small v-if="entry.book === 'TRUE'">
+                  <a v-if="entry.website" :href="entry.website" target="_blank"
+                    >Buch auf Thalia anschauen</a
+                  >
+                </small>
+                <small v-else>
+                  <a
                     v-if="entry.website"
                     :href="entry.website"
                     target="_blank"
                     >{{ entry.website }}</a
-                  ></small
-                >
+                  >
+                </small>
               </p>
             </div>
             <nav class="level is-mobile">
@@ -107,6 +112,17 @@
                 >
                   <span class="icon is-small has-text-primary">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a
+                  v-if="entry.newsletter"
+                  :href="entry.newsletter"
+                  target="_blank"
+                  class="level-item"
+                  aria-label="newsletter"
+                >
+                  <span class="icon is-small has-text-primary">
+                    <i class="fas fa-inbox" aria-hidden="true"></i>
                   </span>
                 </a>
               </div>

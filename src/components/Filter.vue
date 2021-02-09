@@ -138,9 +138,9 @@ export default {
         { key: "support", title: "Unterstützen", selected: false },
       ],
       format: [
-        { key: "blog", title: "Blog", icon: "fas fa-blog", selected: false },
+        // { key: "blog", title: "Blog", icon: "fas fa-blog", selected: false },
         {
-          key: "news",
+          key: "newsletter",
           title: "Newsletter",
           icon: "fas fa-inbox",
           selected: false,
@@ -169,7 +169,7 @@ export default {
         //   icon: "fab fa-tiktok",
         //   selected: false,
         // },
-        { key: "books", title: "Book", icon: "fas fa-book", selected: false },
+        { key: "book", title: "Book", icon: "fas fa-book", selected: false },
       ],
       social: [
         {

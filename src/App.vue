@@ -96,7 +96,9 @@ export default {
           return true;
         }
         // omit empty keys
-        const rowWithoutEmpty = omitBy(row, isEmpty);
+        const rowWithoutEmpty = omitBy(row, (value) => {
+          return isEmpty(value) || value === "FALSE";
+        });
         // check if row has keys that match filterKeys
         if (keys(pick(rowWithoutEmpty, filterKeys)).length > 0) {
           return true;
@@ -144,8 +146,12 @@ export default {
           tiktok: row[12],
           telegram: row[13],
           email: row[14],
-          region: row[15],
-          cities: row[16],
+          book: row[15],
+          age: row[16],
+          region: row[17],
+          cities: row[18],
+          language: row[19],
+          date: row[20],
         };
       });
     },
