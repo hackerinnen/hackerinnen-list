@@ -16,7 +16,11 @@
             <div class="content">
               <p>
                 <strong>{{ entry.title }}</strong>
-                <!-- <span class="tag is-primary is-light ml-2">Empfehlung</span> -->
+                <span
+                  v-if="entry.language"
+                  class="tag is-primary is-light ml-2"
+                  >{{ entry.language }}</span
+                >
                 <br />
                 {{ entry.description }}
                 <br />

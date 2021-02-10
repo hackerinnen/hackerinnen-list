@@ -169,7 +169,19 @@ export default {
         //   icon: "fab fa-tiktok",
         //   selected: false,
         // },
+        {
+          key: "podcast",
+          title: "Podcast",
+          icon: "fas fa-podcast",
+          selected: false,
+        },
         { key: "book", title: "Book", icon: "fas fa-book", selected: false },
+        {
+          key: "meetup",
+          title: "Meetup",
+          icon: "fab fa-meetup",
+          selected: false,
+        },
       ],
       social: [
         {

@@ -79,7 +79,7 @@ export default {
         const gapi = await this.$gapi.getGapiClient();
         const res = await gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: process.env.VUE_APP_SPREADSHEET_ID,
-          range: "Initiativen!A2:P100",
+          range: "Initiativen!A2:W100",
         });
         const body = JSON.parse(res.body);
         this.data = body.values;
@@ -130,7 +130,6 @@ export default {
       //change row data into object
       return enabledRows.map((row) => {
         // ignore row[0]
-        // meetup
         return {
           title: row[1],
           color: row[2],
@@ -146,13 +145,14 @@ export default {
           tiktok: row[12],
           podcase: row[13],
           telegram: row[14],
-          email: row[15],
-          book: row[16],
-          age: row[17],
-          region: row[18],
-          cities: row[19],
-          language: row[20],
-          date: row[21],
+          meetup: row[15],
+          email: row[16],
+          book: row[17],
+          age: row[18],
+          region: row[19],
+          cities: row[20],
+          language: row[21],
+          date: row[22],
         };
       });
     },
