@@ -18,7 +18,7 @@
                 <strong>{{ entry.title }}</strong>
                 <span
                   v-if="entry.language"
-                  class="tag is-primary is-light ml-2"
+                  class="tag language-tag is-light ml-2"
                   >{{ entry.language }}</span
                 >
                 <br />
@@ -137,7 +137,7 @@
       <div class="column">
         <div class="column-separator p-2">
           <span
-            class="tag is-info is-light ml-2"
+            class="tag is-info is-light ml-2 mb-2"
             v-for="tag in formatTags(entry.tags)"
             :key="tag"
             >{{ tag }}</span
@@ -173,5 +173,8 @@ li {
 .column-separator {
   border-left: 1px solid rgb(10 10 10 / 5%);
   height: 100%;
+}
+.language-tag {
+  height: 1.5em;
 }
 </style>
