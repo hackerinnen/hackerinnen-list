@@ -52,7 +52,7 @@
 <script>
 import List from "@/components/List.vue";
 import Filter from "@/components/Filter.vue";
-import { pick, keys, omitBy, isEmpty } from "lodash";
+import { pick, keys, omitBy, isEmpty, intersection } from "lodash";
 
 export default {
   name: "App",
@@ -90,7 +90,16 @@ export default {
     onFilterChange: function(selection) {
       this.selection = selection;
     },
-    matchKeys: function(rows, filterKeys) {
+    matchKeys: function(rows, selection) {
+      // ignore selections that have tags
+      const filteredSelection = selection.filter((item) => {
+        return !item.tags;
+      });
+      // get all keys of selections
+      const filterKeys = filteredSelection.map((item) => {
+        return item.key;
+      });
+
       return rows.filter((row) => {
         if (filterKeys.length < 1) {
           return true;
@@ -106,15 +115,22 @@ export default {
         return false;
       });
     },
-    matchTags: function(rows, filterKeys) {
-      //todo
+    matchTags: function(rows, selection) {
+      let filterTags = [];
+      // get all tags of selections
+      selection.forEach((item) => {
+        if (!item.tags) return;
+        filterTags = filterTags.concat(item.tags);
+      });
+
       return rows.filter((row) => {
-        if (filterKeys.length < 1) {
+        if (filterTags.length < 1) {
           return true;
         }
-        const tags = row.tags;
-        console.log(tags);
-        if (keys(pick(tags, filterKeys)).length > 0) {
+        let tags = row.tags.split(",");
+        tags = tags.map((tag) => tag.trim());
+        // find same tags
+        if (intersection(tags, filterTags).length > 0) {
           return true;
         }
         return false;
@@ -157,11 +173,8 @@ export default {
       });
     },
     filteredRows: function() {
-      const selectionKeys = this.selection.map((item) => {
-        return item.key;
-      });
-      return this.matchKeys(this.enabledRows, selectionKeys);
-      // return this.matchTags(rows, selectionKeys);
+      let filteredByKeys = this.matchKeys(this.enabledRows, this.selection);
+      return this.matchTags(filteredByKeys, this.selection);
     },
   },
 };

@@ -125,17 +125,54 @@ export default {
   data: function() {
     return {
       interests: [
-        { key: "meetup", title: "Meetup", selected: false },
-        { key: "conference", title: "Konferenzen", selected: false },
-        { key: "initiative", title: "Initiativen", selected: false },
-        { key: "hackspace", title: "Hackerspace", selected: false },
-        { key: "workshop", title: "Workshop", selected: false },
-        { key: "network", title: "Netzwerk", selected: false },
-        { key: "community", title: "Communities", selected: false },
-        { key: "code", title: "Programmieren lernen", selected: false },
-        { key: "learn", title: "Technik verstehen", selected: false },
-        { key: "mentorship", title: "Mentoring", selected: false },
-        { key: "support", title: "Unterstützen", selected: false },
+        {
+          key: "conference",
+          title: "Konferenzen",
+          selected: false,
+          tags: ["Konferenz"],
+        },
+        {
+          key: "initiative",
+          title: "Initiativen",
+          selected: false,
+          tags: ["Initiative"],
+        },
+        {
+          key: "lab",
+          title: "Lab",
+          selected: false,
+          tags: ["Hackspace", "Lab"],
+        },
+        {
+          key: "workshop",
+          title: "Workshop",
+          selected: false,
+          tags: ["Workshop"],
+        },
+        {
+          key: "network",
+          title: "Netzwerk",
+          selected: false,
+          tags: ["Netzwerk"],
+        },
+        {
+          key: "community",
+          title: "Communities",
+          selected: false,
+          tags: ["Community", "Verein"],
+        },
+        {
+          key: "code",
+          title: "Programmieren lernen",
+          selected: false,
+          tags: ["Workshop", "Tutorial", "Kurs", "Bootcamp"],
+        },
+        {
+          key: "mentorship",
+          title: "Mentoring",
+          selected: false,
+          tags: ["Mentoring"],
+        },
       ],
       format: [
         // { key: "blog", title: "Blog", icon: "fas fa-blog", selected: false },
