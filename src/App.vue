@@ -79,7 +79,7 @@ export default {
         const gapi = await this.$gapi.getGapiClient();
         const res = await gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: process.env.VUE_APP_SPREADSHEET_ID,
-          range: "Initiativen!A2:W100",
+          range: "Liste!A2:W100",
         });
         const body = JSON.parse(res.body);
         this.data = body.values;
