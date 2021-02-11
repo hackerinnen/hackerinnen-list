@@ -2,14 +2,14 @@
   <button class="delete is-pulled-right" @click="$emit('close')"></button>
   <form
     v-if="!submitted"
-    name="contact-form"
+    name="contact"
     method="POST"
     class="mt-5"
     netlify
     data-netlify-honeypot="bot-field"
     @submit.prevent="onSubmit"
   >
-    <input type="hidden" name="form-name" value="contact-form" />
+    <input type="hidden" name="form-name" value="contact" />
     <p class="pr-4 pl-4">
       Du kennste eine Initiative, eine Webseite, einen Blog der hier fehlt? Dann
       lass es und wissen!
@@ -77,7 +77,7 @@ export default {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: this.encode({
-            "form-name": "contact-form",
+            "form-name": "contact",
             ...this.form,
           }),
         });
