@@ -1,6 +1,13 @@
 <template>
   <button class="delete is-pulled-right" @click="$emit('close')"></button>
-  <form name="contact" method="POST" class="mt-5" data-netlify="true">
+  <form
+    name="contact"
+    method="POST"
+    class="mt-5"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="contact" />
     <p class="pr-4 pl-4">
       Du kennste eine Initiative, eine Webseite, einen Blog der hier fehlt? Dann
       lass es und wissen!
