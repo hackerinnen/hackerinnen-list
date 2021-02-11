@@ -4,7 +4,7 @@
     name="contact"
     method="POST"
     class="mt-5"
-    data-netlify="true"
+    netlify
     data-netlify-honeypot="bot-field"
   >
     <input type="hidden" name="form-name" value="contact" />
