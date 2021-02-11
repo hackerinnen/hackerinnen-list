@@ -1,7 +1,7 @@
 <template>
   <div v-if="open" class="sidebar has-background-primary has-text-left">
     <div class="content p-4">
-      <button class="delete is-pulled-right" @click="$emit('close')"></button>
+      <!-- <button class="delete is-pulled-right" @click="$emit('close')"></button> -->
       <h2
         v-if="selectedFilter.length > 0"
         class="subtitle is-size-6 mb-3 has-text-white"
@@ -147,7 +147,7 @@ export default {
           key: "workshop",
           title: "Workshop",
           selected: false,
-          tags: ["Workshop"],
+          tags: ["Workshop", "Workshops"],
         },
         {
           key: "network",

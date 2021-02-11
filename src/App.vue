@@ -17,12 +17,15 @@
         </div>
       </div>
       <div class="navbar-end">
-        <span class="button is-primary" @click="toggleFilter">
-          <i class="fas fa-filter mr-2"></i>Filter</span
-        >
+        <span class="button is-primary" @click="showForm = true">
+          <i class="fas fa-plus"></i
+        ></span>
       </div>
     </div>
   </nav>
+  <div v-if="showForm" class="box form">
+    <Form @close="showForm = false" />
+  </div>
   <div v-if="enabledRows.length > 0" class="container is-fullhd pt-5">
     <div class="columns">
       <div v-if="showFilter" class="column">
@@ -52,6 +55,7 @@
 <script>
 import List from "@/components/List.vue";
 import Filter from "@/components/Filter.vue";
+import Form from "@/components/Form.vue";
 import { pick, keys, omitBy, isEmpty, intersection } from "lodash";
 
 export default {
@@ -59,12 +63,14 @@ export default {
   components: {
     List,
     Filter,
+    Form,
   },
   data: function() {
     return {
       data: [],
       selection: [],
       showFilter: true,
+      showForm: false,
     };
   },
   mounted() {
@@ -198,5 +204,15 @@ body {
 
 #app {
   margin-top: 52px;
+}
+</style>
+
+<style lang="scss" scoped>
+.box.form {
+  max-width: 400px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 50;
 }
 </style>
