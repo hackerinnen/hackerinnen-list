@@ -73,7 +73,7 @@ export default {
     },
     onSubmit: async function() {
       try {
-        await fetch("/", {
+        await fetch("/form", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: this.encode({
