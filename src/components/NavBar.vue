@@ -1,19 +1,28 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar mt-3" role="navigation" aria-label="main navigation">
     <div class="container is-fullhd">
-      <div class="navbar-brand">
-        <span class="title is-3 is-size-4-mobile ml-3">
-          Hackerinnen Liste
-        </span>
-      </div>
       <div class="navbar-start">
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless">
-            <i class="far fa-question-circle is-medium has-text-primary"></i>
+            <span class="title mb-2 is-3 is-size-4-mobile">
+              Hackerinnen im Netz
+            </span>
+            <i
+              class="far fa-question-circle has-text-primary question-mark"
+            ></i>
           </a>
           <div class="navbar-dropdown p-3" style="width: 200px;">
-            Hallo! Schön das hier bist.
+            Diese Linksammlung soll Initiativen, Projekte und Communities
+            sichtbar machen und helfen, dass sich Hackerinnen
+            <small>(und die, die es werden wollen)</small> im Internet finden,
+            inspirieren, austauschen und vernetzen können.
           </div>
+        </div>
+        <div class="navbar-item">
+          Eine kuratierte Linksammlung
+          <!-- <a href="https://hackerinnen.space" class="navbar-link is-arrowless"
+            >kuratiert von Hackerinnen.space</a
+          > -->
         </div>
       </div>
       <div class="navbar-end">
@@ -36,5 +45,14 @@ export default {
 .title {
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
+}
+.question-mark {
+  top: 6px;
+  position: absolute;
+  right: -6px;
+}
+
+.navbar-item.has-dropdown:hover .navbar-link {
+  background-color: #fff;
 }
 </style>

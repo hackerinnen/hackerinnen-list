@@ -16,10 +16,12 @@
         <List :data="filteredRows" />
 
         <p class="p-4 is-size-7">
-          Coding-Initiativen kennenlernen, auf Social Media folgen, YouTube
-          Channels abonnieren, programmieren lernen, Technik verstehen, an
-          Meetups teilnehmen, networken, Hackerinnen treffen, Hackerspaces
-          besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT
+          Coding-Initiativen kennenlernen, Initiativen auf Social Media folgen,
+          YouTube Channels abonnieren, programmieren lernen, Technik verstehen,
+          an Meetups teilnehmen, netzwerken, Hackerinnen treffen, Hackerspaces
+          besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT,
+          Frauen in IT, Mentoren finden, lokale Communities finden,
+          Nachwuchsförderungen, Frauen der Informatik, fachlicher Austausch
         </p>
       </div>
     </div>
@@ -180,9 +182,5 @@ body {
   background-color: $primary;
   background-color: rgba(0, 209, 178, 0.06);
   min-height: 100vh;
-}
-
-#app {
-  margin-top: 52px;
 }
 </style>
