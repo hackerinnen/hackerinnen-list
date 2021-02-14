@@ -20,8 +20,8 @@
           YouTube Channels abonnieren, programmieren lernen, Technik verstehen,
           an Meetups teilnehmen, netzwerken, Hackerinnen treffen, Hackerspaces
           besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT,
-          Frauen in IT, Mentoren finden, lokale Communities finden,
-          Nachwuchsförderungen, Frauen der Informatik, fachlicher Austausch
+          Frauen in IT, Mentorinnen finden, lokale Communities finden,
+          Nachwuchsförderungen, Frauen in der Informatik, fachlicher Austausch
         </p>
       </div>
     </div>
