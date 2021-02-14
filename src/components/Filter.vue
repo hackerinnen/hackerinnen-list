@@ -95,7 +95,7 @@
         </span>
       </div>
 
-      <h2 class="subtitle is-size-6 mb-3 has-text-white">
+      <!-- <h2 class="subtitle is-size-6 mb-3 has-text-white">
         Zielgruppe
       </h2>
       <div class="tags are-medium">
@@ -113,7 +113,7 @@
           @click="onSelect(item)"
           >{{ item.title }}</span
         >
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
