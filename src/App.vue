@@ -25,6 +25,38 @@
         </p>
       </div>
     </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="is-size-7">
+          <a
+            class="is-size-5"
+            href="https://github.com/hackerinnen/hackerinnen"
+            target="_blank"
+            rel="noopener noreferer"
+            ><i class="fab fa-github social-icon"></i></a
+          ><a
+            class="is-size-5 mr-2 ml-2"
+            href="https://twitter.com/hackerinnen"
+            target="_blank"
+            rel="noopener noreferer"
+            ><i class="fab fa-twitter social-icon"></i></a
+          ><a
+            class="is-size-5"
+            href="https://instagram.com/hackerinnen.space"
+            target="_blank"
+            rel="noopener noreferer"
+            ><i class="fab fa-instagram"></i></a
+          ><br />
+          <a href="https://hackerinnen.space/de" target="_blank"
+            >Hackerinnen.space</a
+          >
+          |
+          <a href="https://hackerinnen.space/de/impressum/">Impressum</a>
+          |
+          <a href="https://hackerinnen.space/de/datenschutz/">Datenschutz</a>
+        </p>
+      </div>
+    </footer>
   </div>
   <div v-else class="pt-5">
     Lade Liste...
