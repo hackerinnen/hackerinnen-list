@@ -1,29 +1,6 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container is-fullhd">
-      <div class="navbar-brand">
-        <span class="title is-3 is-size-4-mobile ml-3">
-          Die Hackerinnen Liste
-        </span>
-      </div>
-      <div class="navbar-start">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link is-arrowless">
-            <i class="far fa-question-circle is-medium has-text-primary"></i>
-          </a>
-          <div class="navbar-dropdown p-3" style="width: 200px;">
-            Hallo! Schön das hier bist.
-          </div>
-        </div>
-      </div>
-      <div class="navbar-end">
-        <span class="button is-primary" @click="showForm = true">
-          <i class="fas fa-plus"></i
-        ></span>
-      </div>
-    </div>
-  </nav>
-  <div v-if="showForm" class="box form">
+  <NavBar @show-form="showForm = true" />
+  <div v-if="showForm" class="container is-fullhd">
     <Form @close="showForm = false" />
   </div>
   <div v-if="enabledRows.length > 0" class="container is-fullhd pt-5">
@@ -48,7 +25,7 @@
     </div>
   </div>
   <div v-else class="pt-5">
-    Loading...
+    Lade Liste...
   </div>
 </template>
 
@@ -56,6 +33,7 @@
 import List from "@/components/List.vue";
 import Filter from "@/components/Filter.vue";
 import Form from "@/components/Form.vue";
+import NavBar from "@/components/NavBar.vue";
 import { pick, keys, omitBy, isEmpty, intersection } from "lodash";
 
 export default {
@@ -64,6 +42,7 @@ export default {
     List,
     Filter,
     Form,
+    NavBar,
   },
   data: function() {
     return {
@@ -205,15 +184,5 @@ body {
 
 #app {
   margin-top: 52px;
-}
-</style>
-
-<style lang="scss" scoped>
-.box.form {
-  max-width: 400px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 50;
 }
 </style>
