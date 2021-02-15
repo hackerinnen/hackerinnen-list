@@ -7,6 +7,8 @@ sichtbar machen und helfen, dass sich Hackerinnen
 (und die, die es werden wollen) im Internet finden,
 inspirieren, austauschen und vernetzen können.
 
+Unter Hackerinnen verstehen wir nicht-männliche Personen die sich für Computer und Technik interessieren.
+
 ## Project setup
 
 ```
