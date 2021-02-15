@@ -5,7 +5,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless">
             <span class="title mb-2 is-3 is-size-4-mobile">
-              Hackerinnen im Netz
+              Hackerinnen Links
             </span>
             <i
               class="far fa-question-circle has-text-primary question-mark is-hidden-mobile"
