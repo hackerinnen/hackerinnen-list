@@ -8,24 +8,24 @@
               Hackerinnen im Netz
             </span>
             <i
-              class="far fa-question-circle has-text-primary question-mark"
+              class="far fa-question-circle has-text-primary question-mark is-hidden-mobile"
             ></i>
           </a>
-          <div class="navbar-dropdown p-3" style="width: 200px;">
+          <div class="navbar-dropdown p-3">
             Diese Linksammlung soll Initiativen, Projekte und Communities
             sichtbar machen und helfen, dass sich Hackerinnen
             <small>(und die, die es werden wollen)</small> im Internet finden,
             inspirieren, austauschen und vernetzen können.
           </div>
         </div>
-        <div class="navbar-item">
+        <div class="navbar-item is-hidden-mobile">
           Eine kuratierte Linksammlung
           <!-- <a href="https://hackerinnen.space" class="navbar-link is-arrowless"
             >kuratiert von Hackerinnen.space</a
           > -->
         </div>
       </div>
-      <div class="navbar-end">
+      <div class="navbar-end is-hidden-mobile">
         <span class="button is-primary" @click="$emit('showForm')">
           <i class="fas fa-plus"></i
         ></span>

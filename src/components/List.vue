@@ -135,14 +135,13 @@
         </article>
       </div>
       <div class="column">
-        <div class="column-separator p-2">
-          <span
-            class="tag is-info is-light ml-2 mb-2"
-            v-for="tag in formatTags(entry.tags)"
-            :key="tag"
-            >{{ tag }}</span
-          >
-        </div>
+        <span class="column-separator is-pulled-left is-hidden-mobile"></span>
+        <span
+          class="tag is-info is-light ml-2 mb-2"
+          v-for="tag in formatTags(entry.tags)"
+          :key="tag"
+          >{{ tag }}</span
+        >
       </div>
     </div>
   </div>
