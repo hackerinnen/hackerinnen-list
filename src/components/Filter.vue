@@ -138,16 +138,10 @@ export default {
           tags: ["Initiative"],
         },
         {
-          key: "lab",
-          title: "Lab",
+          key: "Hackspace",
+          title: "Hackspace",
           selected: false,
-          tags: ["Hackspace", "Lab"],
-        },
-        {
-          key: "workshop",
-          title: "Workshop",
-          selected: false,
-          tags: ["Workshop", "Workshops"],
+          tags: ["Hackspace"],
         },
         {
           key: "network",
@@ -162,16 +156,34 @@ export default {
           tags: ["Community", "Verein"],
         },
         {
+          key: "mailingliste",
+          title: "Mailingliste",
+          selected: false,
+          tags: ["Mailingliste"],
+        },
+        {
           key: "code",
           title: "Programmieren lernen",
           selected: false,
-          tags: ["Workshop", "Tutorial", "Kurs", "Bootcamp"],
+          tags: ["Workshops", "Tutorial", "Kurse", "Bootcamp"],
         },
         {
           key: "mentorship",
           title: "Mentoring",
           selected: false,
           tags: ["Mentoring"],
+        },
+        {
+          key: "sichtbarkeit",
+          title: "Sichtbarkeit",
+          selected: false,
+          tags: ["Sichtbarkeit"],
+        },
+        {
+          key: "karriere",
+          title: "Karriere",
+          selected: false,
+          tags: ["Karriere"],
         },
       ],
       format: [
@@ -212,7 +224,7 @@ export default {
           icon: "fas fa-podcast",
           selected: false,
         },
-        { key: "book", title: "Book", icon: "fas fa-book", selected: false },
+        { key: "book", title: "Buch", icon: "fas fa-book", selected: false },
         {
           key: "meetup",
           title: "Meetup",

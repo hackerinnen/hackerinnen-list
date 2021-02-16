@@ -110,7 +110,7 @@ export default {
       this.selection = selection;
     },
     matchKeys: function(rows, selection) {
-      // ignore selections that have tags
+      // ignore selections that are of type tag
       const filteredSelection = selection.filter((item) => {
         return !item.tags;
       });
@@ -136,7 +136,7 @@ export default {
     },
     matchTags: function(rows, selection) {
       let filterTags = [];
-      // get all tags of selections
+      // ignore selections that are not of type tag
       selection.forEach((item) => {
         if (!item.tags) return;
         filterTags = filterTags.concat(item.tags);
@@ -149,7 +149,8 @@ export default {
         let tags = row.tags.split(",");
         tags = tags.map((tag) => tag.trim());
         // find same tags
-        if (intersection(tags, filterTags).length > 0) {
+        console.log(tags, filterTags, intersection(tags, filterTags));
+        if (intersection(tags, filterTags).length === filterTags.length) {
           return true;
         }
         return false;
