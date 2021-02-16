@@ -16,12 +16,13 @@
         <List :data="filteredRows" />
 
         <p class="p-4 is-size-7">
-          Coding-Initiativen kennenlernen, Initiativen auf Social Media folgen,
+          Coding-Initiativen finden, Initiativen auf Social Media folgen,
           YouTube Channels abonnieren, programmieren lernen, Technik verstehen,
-          an Meetups teilnehmen, netzwerken, Hackerinnen treffen, Hackerspaces
-          besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT,
-          Frauen in IT, Mentorinnen finden, lokale Communities finden,
-          Nachwuchsförderungen, Frauen in der Informatik, fachlicher Austausch
+          an Meetups teilnehmen, netzwerken, Hackerinnen kennenlernen,
+          Hackerspaces besuchen, Newsletter abonnieren, vernetzen, Frauen und
+          Technik, MINT, Frauen in IT, Mentorinnen finden, lokale Communities
+          finden, Nachwuchsförderungen, Frauen in der Informatik, fachlicher
+          Austausch, Coding-Bootcamp
         </p>
       </div>
     </div>
