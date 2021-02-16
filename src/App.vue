@@ -128,7 +128,9 @@ export default {
           return isEmpty(value) || value === "FALSE";
         });
         // check if row has keys that match filterKeys
-        if (keys(pick(rowWithoutEmpty, filterKeys)).length > 0) {
+        if (
+          keys(pick(rowWithoutEmpty, filterKeys)).length === filterKeys.length
+        ) {
           return true;
         }
         return false;
@@ -149,9 +151,24 @@ export default {
         let tags = row.tags.split(",");
         tags = tags.map((tag) => tag.trim());
         // find same tags
-        console.log(tags, filterTags, intersection(tags, filterTags));
-        if (intersection(tags, filterTags).length === filterTags.length) {
+        if (
+          filterTags.length === 1 &&
+          intersection(tags, filterTags).length === 1
+        ) {
           return true;
+        }
+        if (filterTags.length > 1) {
+          let foundMatch = false;
+          filterTags.every((filterTag) => {
+            if (tags.includes(filterTag)) {
+              foundMatch = true;
+              // stop loop
+              return false;
+            }
+            //continue loop
+            return true;
+          });
+          return foundMatch;
         }
         return false;
       });
@@ -194,7 +211,7 @@ export default {
       });
     },
     filteredRows: function() {
-      let filteredByKeys = this.matchKeys(this.enabledRows, this.selection);
+      const filteredByKeys = this.matchKeys(this.enabledRows, this.selection);
       return this.matchTags(filteredByKeys, this.selection);
     },
   },
