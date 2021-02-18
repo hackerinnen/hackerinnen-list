@@ -149,6 +149,9 @@ export default {
         if (filterTags.length < 1) {
           return true;
         }
+        if (!row.tags) {
+          return false;
+        }
         let tags = row.tags.split(",");
         tags = tags.map((tag) => tag.trim());
         // find same tags

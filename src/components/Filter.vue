@@ -138,7 +138,7 @@ export default {
           tags: ["Initiative"],
         },
         {
-          key: "Hackspace",
+          key: "hackspace",
           title: "Hackspace",
           selected: false,
           tags: ["Hackspace"],
