@@ -96,6 +96,26 @@
       </div>
 
       <!-- <h2 class="subtitle is-size-6 mb-3 has-text-white">
+        Sprache
+      </h2>
+      <div class="tags are-medium">
+        <span
+          v-for="item in language"
+          :key="item.key"
+          :class="[
+            'tag',
+            'is-primary',
+            'is-rounded',
+            'is-normal',
+            item.selected ? 'hide' : 'is-light',
+          ]"
+          @click="onSelect(item)"
+        >
+          {{ item.title }}
+        </span>
+      </div> -->
+
+      <!-- <h2 class="subtitle is-size-6 mb-3 has-text-white">
         Zielgruppe
       </h2>
       <div class="tags are-medium">
@@ -150,16 +170,22 @@ export default {
           tags: ["Netzwerk"],
         },
         {
+          key: "lokal",
+          title: "lokale Angebote",
+          selected: false,
+          tags: ["lokale Community", "lokale Angebote"],
+        },
+        {
           key: "community",
           title: "Communities",
           selected: false,
-          tags: ["Community", "Verein"],
+          tags: ["Community"],
         },
         {
-          key: "mailingliste",
-          title: "Mailingliste",
+          key: "Vorbilder",
+          title: "Vorbilder",
           selected: false,
-          tags: ["Mailingliste"],
+          tags: ["Vorbilder"],
         },
         {
           key: "code",
@@ -174,10 +200,16 @@ export default {
           tags: ["Mentoring"],
         },
         {
-          key: "sichtbarkeit",
+          key: "Sichtbarkeit",
           title: "Sichtbarkeit",
           selected: false,
           tags: ["Sichtbarkeit"],
+        },
+        {
+          key: "mailingliste",
+          title: "Mailingliste",
+          selected: false,
+          tags: ["Mailingliste"],
         },
         {
           key: "karriere",
@@ -252,10 +284,14 @@ export default {
           selected: false,
         },
       ],
+      language: [
+        { key: "de", title: "DE", selected: false },
+        { key: "en", title: "EN", selected: false },
+      ],
       audience: [
         { key: "pupil", title: "Schüler", selected: false },
-        { key: "student", title: "Student", selected: false },
-        { key: "adult", title: "Über 16", selected: false },
+        // { key: "student", title: "Student", selected: false },
+        { key: "adult", title: "Ab 16", selected: false },
       ],
     };
   },

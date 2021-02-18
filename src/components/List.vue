@@ -129,6 +129,17 @@
                     <i class="fas fa-inbox" aria-hidden="true"></i>
                   </span>
                 </a>
+                <a
+                  v-if="entry.meetup"
+                  :href="entry.meetup"
+                  target="_blank"
+                  class="level-item"
+                  aria-label="meetup"
+                >
+                  <span class="icon is-small has-text-primary">
+                    <i class="fab fa-meetup" aria-hidden="true"></i>
+                  </span>
+                </a>
               </div>
             </nav>
           </div>
