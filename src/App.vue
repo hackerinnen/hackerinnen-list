@@ -200,7 +200,7 @@ export default {
           youtube: row[10],
           twitch: row[11],
           tiktok: row[12],
-          podcase: row[13],
+          podcast: row[13],
           telegram: row[14],
           meetup: row[15],
           email: row[16],
