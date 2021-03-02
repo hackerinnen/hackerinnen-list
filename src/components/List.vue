@@ -130,6 +130,17 @@
                   </span>
                 </a>
                 <a
+                  v-if="entry.podcast"
+                  :href="entry.podcast"
+                  target="_blank"
+                  class="level-item"
+                  aria-label="podcast"
+                >
+                  <span class="icon is-small has-text-primary">
+                    <i class="fas fa-podcast" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a
                   v-if="entry.meetup"
                   :href="entry.meetup"
                   target="_blank"
