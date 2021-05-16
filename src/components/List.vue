@@ -8,7 +8,6 @@
         <article class="media">
           <div class="media-left">
             <figure class="image is-16x16" :style="`color: ${entry.color}`">
-              <!-- <img :src="entry.logo" alt="Image" /> -->
               <i class="far fa-heart"></i>
             </figure>
           </div>

@@ -3,7 +3,7 @@
   <div v-if="showForm" class="container is-fullhd">
     <Form @close="showForm = false" />
   </div>
-  <div v-if="enabledRows.length > 0" class="container is-fullhd pt-5">
+  <div class="container is-fullhd py-5">
     <div class="columns">
       <div v-if="showFilter" class="column">
         <Filter
@@ -13,7 +13,10 @@
         />
       </div>
       <div :class="['column', showFilter ? 'is-two-thirds' : 'is-full']">
-        <List :data="filteredRows" />
+        <List v-if="enabledRows.length > 0" :data="filteredRows" />
+        <div v-else class="pt-5">
+          Lade Liste...
+        </div>
 
         <p class="p-4 is-size-7">
           Coding-Initiativen finden, Initiativen auf Social Media folgen,
@@ -22,46 +25,45 @@
           Hackerspaces besuchen, Newsletter abonnieren, vernetzen, Frauen und
           Technik, MINT, Frauen in IT, Mentorinnen finden, lokale Communities
           finden, Nachwuchsförderungen, Frauen in der Informatik, fachlicher
-          Austausch, Coding-Bootcamp
+          Austausch, Coding-Bootcamp, Workshops, Mentoring und
+          Nachwuchsförderung für Frauen, Podcasts, Sichtbarkeit von Frauen in
+          IT, Machine Learning, Robotics, KI
         </p>
       </div>
     </div>
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p class="is-size-7">
-          <a
-            class="is-size-5"
-            href="https://github.com/hackerinnen/hackerinnen"
-            target="_blank"
-            rel="noopener noreferer"
-            ><i class="fab fa-github social-icon"></i></a
-          ><a
-            class="is-size-5 mr-2 ml-2"
-            href="https://twitter.com/hackerinnen"
-            target="_blank"
-            rel="noopener noreferer"
-            ><i class="fab fa-twitter social-icon"></i></a
-          ><a
-            class="is-size-5"
-            href="https://instagram.com/hackerinnen.space"
-            target="_blank"
-            rel="noopener noreferer"
-            ><i class="fab fa-instagram"></i></a
-          ><br />
-          <a href="https://hackerinnen.space/de" target="_blank"
-            >Hackerinnen.space</a
-          >
-          |
-          <a href="https://hackerinnen.space/de/impressum/">Impressum</a>
-          |
-          <a href="https://hackerinnen.space/de/datenschutz/">Datenschutz</a>
-        </p>
-      </div>
-    </footer>
   </div>
-  <div v-else class="pt-5">
-    Lade Liste...
-  </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="is-size-7">
+        <a
+          class="is-size-5"
+          href="https://github.com/hackerinnen/hackerinnen"
+          target="_blank"
+          rel="noopener noreferer"
+          ><i class="fab fa-github social-icon"></i></a
+        ><a
+          class="is-size-5 mr-2 ml-2"
+          href="https://twitter.com/hackerinnen"
+          target="_blank"
+          rel="noopener noreferer"
+          ><i class="fab fa-twitter social-icon"></i></a
+        ><a
+          class="is-size-5"
+          href="https://instagram.com/hackerinnen.space"
+          target="_blank"
+          rel="noopener noreferer"
+          ><i class="fab fa-instagram"></i></a
+        ><br />
+        <a href="https://hackerinnen.space/de" target="_blank"
+          >Hackerinnen.space</a
+        >
+        |
+        <a href="https://hackerinnen.space/de/impressum/">Impressum</a>
+        |
+        <a href="https://hackerinnen.space/de/datenschutz/">Datenschutz</a>
+      </p>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -235,6 +237,9 @@ body {
   color: #2c3e50;
   background-color: $primary;
   background-color: rgba(0, 209, 178, 0.06);
-  min-height: 100vh;
+}
+
+.container {
+  min-height: 80vh;
 }
 </style>
