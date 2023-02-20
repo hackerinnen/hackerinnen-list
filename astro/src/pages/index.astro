@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import type { AirtableRow } from "../types";
 import Airtable from "airtable";
 
 Airtable.configure({
@@ -11,9 +12,9 @@ Airtable.configure({
 const base = Airtable.base("appk277pk5PlGpVFt");
 
 const fetchData = async () => {
-  return new Promise((resolve, reject) => {
+  return new Promise<AirtableRow[]>((resolve, reject) => {
     // https://airtable.com/appk277pk5PlGpVFt/api/docs#javascript/table:imported%20table
-    let data = [];
+    let data: AirtableRow[] = [];
     base("tblahcbD9Sloj4D9Y")
       .select({
         maxRecords: 500,
@@ -42,8 +43,7 @@ const fetchData = async () => {
   });
 };
 
-const result = await fetchData();
-console.log(result);
+const results = await fetchData();
 ---
 
 <Layout title="Welcome to Astro.">
@@ -55,26 +55,17 @@ console.log(result);
       <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
     </p>
     <ul role="list" class="link-card-grid">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card
-        href="https://astro.build/themes/"
-        title="Themes"
-        body="Explore a galaxy of community-built starter themes."
-      />
-      <Card
-        href="https://astro.build/chat/"
-        title="Community"
-        body="Come say hi to our amazing Discord community. ❤️"
-      />
+      {
+        results.map((result) => {
+          return (
+            <Card
+              href={result.fields.Webseite}
+              title={result.fields.Name}
+              body={result.fields.Beschreibung}
+            />
+          );
+        })
+      }
     </ul>
   </main>
 </Layout>
