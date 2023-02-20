@@ -3,6 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Airtable from "airtable";
 
+Airtable.configure({
+  endpointUrl: "https://api.airtable.com",
+  apiKey: import.meta.env.SECRET_AIRTABLE_ACCESS_TOKEN,
+});
+
 const base = Airtable.base("appk277pk5PlGpVFt");
 
 const fetchData = async () => {
