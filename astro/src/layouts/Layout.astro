@@ -1,35 +1,75 @@
 ---
+import Footer from "../components/Footer.astro";
+import NavBar from "../components/NavBar.astro";
 export interface Props {
-	title: string;
+  title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hackerinnen" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/share-image.jpg" />
+    <meta property="og:image" content="/share-image.jpg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <title>{title}</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://hackerinnen.space/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://hackerinnen.space/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://hackerinnen.space/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+    <Footer />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+
+<style is:global lang="scss">
+  $box-shadow: 0 0.1em 0.5em -0.125em rgb(10 10 10 / 10%),
+    0 0px 0 1px rgb(10 10 10 / 2%);
+  @import "../astro/node_modules/bulma/bulma.sass";
+
+  body {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background-color: $primary;
+    background-color: rgba(0, 209, 178, 0.06);
+  }
+
+  .container {
+    min-height: 80vh;
+  }
 </style>
