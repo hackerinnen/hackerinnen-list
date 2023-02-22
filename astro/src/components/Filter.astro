@@ -1,0 +1,152 @@
+---
+import { filterData } from "./filterData";
+import Icon from "../components/Icon.astro";
+---
+
+<div class="sidebar has-background-primary has-text-left">
+  <div class="content p-4">
+    <h2
+      v-if="selectedFilter.length > 0"
+      class="subtitle is-size-6 mb-3 has-text-white"
+    >
+      Deine Auswahl
+    </h2>
+    <div class="tags are-medium">
+      <!-- <span
+        v-for="item in selectedFilter"
+        :key="`selected-${item.key}`"
+        :class="[
+          'tag',
+          'is-primary',
+          'is-light',
+          'is-rounded',
+          'is-normal',
+          'selection',
+        ]"
+      >
+        <span v-if="item.icon" class="icon mr-1">
+          <i :class="item.icon"></i>
+        </span>
+        {{ item.title }}
+        <button @click="onSelect(item)" class="delete is-small"></button>
+      </span> -->
+    </div>
+    <h2 class="subtitle is-size-6 mb-3 has-text-white">Interessen</h2>
+    <div class="tags are-medium">
+      {
+        filterData.interests.map((item) => {
+          return (
+            <span class="tag is-primary is-light is-rounded is-normal">
+              {item.title}
+            </span>
+          );
+        })
+      }
+      <!-- <span
+        v-for="item in interests"
+        :key="item.key"
+        :class="[
+          'tag',
+          'is-primary',
+          'is-light',
+          'is-rounded',
+          'is-normal',
+          item.selected ? 'hide' : '',
+        ]"
+        @click="onSelect(item)"
+        >{{ item.title }}</span
+      > -->
+    </div>
+
+    <h2 class="subtitle is-size-6 mb-3 has-text-white">Format</h2>
+    <div class="tags are-medium">
+      {
+        filterData.format.map((item) => {
+          return (
+            <span class="tag is-primary is-light is-rounded is-normal">
+              <span class="icon mr-1">
+                <Icon iconName={item.icon.iconName} prefix={item.icon.prefix} />
+              </span>
+              {item.title}
+            </span>
+          );
+        })
+      }
+      <!-- <span
+        v-for="item in format"
+        :key="item.key"
+        :class="[
+          'tag',
+          'is-primary',
+          'is-rounded',
+          'is-normal',
+          item.selected ? 'hide' : 'is-light',
+        ]"
+        @click="onSelect(item)"
+      >
+        <span class="icon mr-1">
+          <i :class="item.icon"></i>
+        </span>
+        {{ item.title }}
+      </span> -->
+    </div>
+
+    <h2 class="subtitle is-size-6 mb-3 has-text-white">Social Media</h2>
+    <div class="tags are-medium">
+      {
+        filterData.social.map((item) => {
+          return (
+            <span class="tag is-primary is-light is-rounded is-normal">
+              <span class="icon mr-1">
+                <Icon iconName={item.icon.iconName} prefix={item.icon.prefix} />
+              </span>
+              {item.title}
+            </span>
+          );
+        })
+      }
+      <!-- <span
+        v-for="item in social"
+        :key="item.key"
+        :class="[
+          'tag',
+          'is-primary',
+          'is-light',
+          'is-rounded',
+          'is-normal',
+          item.selected ? 'hide' : '',
+        ]"
+        @click="onSelect(item)"
+      >
+        <span class="icon mr-1">
+          <i :class="item.icon"></i>
+        </span>
+        {{ item.title }}
+      </span> -->
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .sidebar {
+    width: 100%;
+    border-radius: 12px;
+  }
+  .tag {
+    cursor: pointer;
+  }
+
+  .tag:hover {
+    background-color: white;
+  }
+
+  .tag.selection {
+    background-color: #ebfffc;
+    cursor: inherit;
+  }
+
+  .tag.hide,
+  .tag.hide:hover {
+    display: none;
+  }
+</style>
