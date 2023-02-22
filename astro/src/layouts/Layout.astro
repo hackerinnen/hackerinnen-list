@@ -48,9 +48,11 @@ const { title, description } = Astro.props as LayoutProps;
     />
   </head>
   <body>
-    <NavBar />
-    <slot />
-    <Footer />
+    <main>
+      <NavBar />
+      <slot />
+      <Footer />
+    </main>
   </body>
 </html>
 
@@ -59,7 +61,7 @@ const { title, description } = Astro.props as LayoutProps;
     0 0px 0 1px rgb(10 10 10 / 2%);
   @import "../astro/node_modules/bulma/bulma.sass";
 
-  body {
+  main {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -67,9 +69,5 @@ const { title, description } = Astro.props as LayoutProps;
     color: #2c3e50;
     background-color: $primary;
     background-color: rgba(0, 209, 178, 0.06);
-  }
-
-  .container {
-    min-height: 80vh;
   }
 </style>

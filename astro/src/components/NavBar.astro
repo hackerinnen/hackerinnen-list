@@ -1,3 +1,7 @@
+---
+import Icon from "./Icon.astro";
+---
+
 <nav class="navbar mt-3" role="navigation" aria-label="main navigation">
   <div class="container is-fullhd">
     <div class="navbar-start">
@@ -6,9 +10,11 @@
           <span class="title mb-2 is-3 is-size-4-mobile">
             Hackerinnen Links
           </span>
-          <i
-            class="far fa-question-circle has-text-primary question-mark is-hidden-mobile"
-          ></i>
+          <figure
+            class="image is-16x16 has-text-primary is-hidden-mobile question-mark"
+          >
+            <Icon iconName="question-circle" prefix="far" />
+          </figure>
         </a>
         <div class="navbar-dropdown p-3">
           Diese Linksammlung soll Initiativen, Projekte und Communities sichtbar
@@ -39,11 +45,11 @@
   }
   .question-mark {
     top: 6px;
-    position: absolute;
+    position: absolute !important;
     right: -6px;
   }
 
   .navbar-item.has-dropdown:hover .navbar-link {
-    background-color: #fff;
+    background-color: #fff !important;
   }
 </style>
