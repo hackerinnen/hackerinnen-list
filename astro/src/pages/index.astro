@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import type { AirtableRow } from "../types";
+import Icon from "../components/Icon.astro";
+import type { Resource } from "../types";
 import Airtable from "airtable";
 
 Airtable.configure({
@@ -12,12 +13,12 @@ Airtable.configure({
 const base = Airtable.base("appk277pk5PlGpVFt");
 
 const fetchData = async () => {
-  return new Promise<AirtableRow[]>((resolve, reject) => {
-    // https://airtable.com/appk277pk5PlGpVFt/api/docs#javascript/table:imported%20table
-    let data: AirtableRow[] = [];
-    base("tblahcbD9Sloj4D9Y")
+  return new Promise<Resource[]>((resolve, reject) => {
+    // https://airtable.com/appk277pk5PlGpVFt/api/docs#curl/table:resources
+    let data: Resource[] = [];
+    base("tblEnh7pNKnZSwgdl")
       .select({
-        maxRecords: 500,
+        maxRecords: 300,
         view: "Grid view",
       })
       .eachPage(
@@ -49,30 +50,21 @@ const results = await fetchData();
 
 <Layout
   title="Hackerinnen Links"
-  description="Diese Linksammlung soll Initiativen, Projekte und Communities
-  sichtbar machen und helfen, dass sich Frauen in IT im Internet finden,
-  inspirieren, austauschen und vernetzen können."
+  description="Diese Linksammlung soll Initiativen, Projekte und Communities sichtbar machen und helfen, dass sich Frauen in IT im Internet finden, inspirieren, austauschen und vernetzen können"
 >
-  <main>
-    <div class="container is-fullhd py-5">
-      <div class="columns">
-        <div class="column"></div>
-        <div class="column is-two-thirds">
-          <ul role="list" class="link-card-grid">
-            {
-              results.map((result) => {
-                return (
-                  <Card
-                    href={result.fields.Webseite}
-                    title={result.fields.Name}
-                    body={result.fields.Beschreibung}
-                  />
-                );
-              })
+  <div class="container is-fullhd py-5">
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-two-thirds">
+        {
+          results.map((result) => {
+            if (result.fields.public) {
+              return <Card fields={result.fields} id={result.id} />;
             }
-          </ul>
-        </div>
+            return null;
+          })
+        }
       </div>
     </div>
-  </main>
+  </div>
 </Layout>

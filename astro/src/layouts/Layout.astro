@@ -1,12 +1,12 @@
 ---
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
-export interface Props {
+export interface LayoutProps {
   title: string;
   description: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props as LayoutProps;
 ---
 
 <!DOCTYPE html>

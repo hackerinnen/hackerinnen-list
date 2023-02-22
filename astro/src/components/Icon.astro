@@ -1,0 +1,30 @@
+---
+import {
+  library,
+  icon,
+  IconName,
+  IconPrefix,
+} from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+
+library.add(fas, fab, far);
+
+export interface IconProps {
+  iconName: IconName;
+  prefix: IconPrefix;
+}
+
+const { iconName, prefix } = Astro.props as IconProps;
+
+let svg;
+try {
+  svg = icon({ prefix, iconName }).html;
+} catch (error) {
+  console.log(error, prefix, iconName);
+  svg = "";
+}
+---
+
+<Fragment set:html={svg} />

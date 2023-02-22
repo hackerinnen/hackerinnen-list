@@ -1,11 +1,10 @@
 ---
-export interface Props {
-  title: string;
-  body: string;
-  href: string;
-}
+import type { Resource } from "../types";
+import Icon from "../components/Icon.astro";
 
-const { href, title, body } = Astro.props;
+export interface CardProps extends Resource {}
+
+const { fields } = Astro.props as CardProps;
 ---
 
 <div class="box">
@@ -14,161 +13,194 @@ const { href, title, body } = Astro.props;
       <article class="media">
         <div class="media-left">
           <figure class="image is-16x16">
-            <i class="far fa-heart"></i>
+            <Icon iconName="heart" prefix="far" />
           </figure>
         </div>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{title}</strong>
-              <!-- <span
-								v-if="entry.language"
-								class="tag language-tag is-light ml-2"
-								>{{ entry.language }}</span
-							> -->
+              <strong>{fields.name}</strong>
+              {
+                fields.language ? (
+                  <span class="tag language-tag is-light ml-2">
+                    {fields.language}
+                  </span>
+                ) : null
+              }
               <br />
-              {body}
+              {fields.description}
               <br />
-              <!-- <small v-if="entry.book === 'TRUE'">
-								<a v-if="entry.website" :href="entry.website" target="_blank"
-									>Buch auf Thalia anschauen</a
-								>
-							</small>
-							<small v-else>
-								<a
-									v-if="entry.website"
-									:href="entry.website"
-									target="_blank"
-									>{{ entry.website }}</a
-								>
-							</small> -->
+              {
+                fields.book ? (
+                  <small>
+                    <a href={fields.website} target="_blank">
+                      Buch auf Thalia anschauen
+                    </a>
+                  </small>
+                ) : (
+                  <small>
+                    <a href={fields.website} target="_blank">
+                      {fields.website}
+                    </a>
+                  </small>
+                )
+              }
             </p>
           </div>
           <nav class="level is-mobile">
-            <!-- <div class="level-left">
-              <a
-                v-if="entry.youtube"
-                :href="entry.youtube"
-                target="_blank"
-                class="level-item"
-                aria-label="youtube"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-youtube" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.twitch"
-                :href="entry.twitch"
-                target="_blank"
-                class="level-item"
-                aria-label="twitch"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-twitch" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.telegram"
-                :href="entry.telegram"
-                target="_blank"
-                class="level-item"
-                aria-label="teleram"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-telegram" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.instagram"
-                :href="entry.instagram"
-                target="_blank"
-                class="level-item"
-                aria-label="instagram"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-instagram" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.twitter"
-                :href="entry.twitter"
-                target="_blank"
-                class="level-item"
-                aria-label="twitter"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-twitter" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.facebook"
-                :href="entry.facebook"
-                target="_blank"
-                class="level-item"
-                aria-label="facebook"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-facebook" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.email"
-                :href="`mailto:${entry.email}`"
-                target="_blank"
-                class="level-item"
-                aria-label="email"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fas fa-envelope" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.newsletter"
-                :href="entry.newsletter"
-                target="_blank"
-                class="level-item"
-                aria-label="newsletter"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fas fa-inbox" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.podcast"
-                :href="entry.podcast"
-                target="_blank"
-                class="level-item"
-                aria-label="podcast"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fas fa-podcast" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a
-                v-if="entry.meetup"
-                :href="entry.meetup"
-                target="_blank"
-                class="level-item"
-                aria-label="meetup"
-              >
-                <span class="icon is-small has-text-primary">
-                  <i class="fab fa-meetup" aria-hidden="true"></i>
-                </span>
-              </a>
-            </div> -->
+            <div class="level-left">
+              {
+                fields.youtube ? (
+                  <a
+                    href="fields.youtube"
+                    target="_blank"
+                    class="level-item"
+                    aria-label="youtube"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="youtube" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.twitch ? (
+                  <a
+                    href="fields.twitch"
+                    target="_blank"
+                    class="level-item"
+                    aria-label="twitch"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="twitch" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.telegram ? (
+                  <a
+                    href={fields.telegram}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="telegram"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="telegram" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.instagram ? (
+                  <a
+                    href={fields.instagram}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="instagram"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="instagram" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.twitter ? (
+                  <a
+                    href={fields.twitter}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="twitter"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="twitter" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.facebook ? (
+                  <a
+                    href={fields.facebook}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="facebook"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="facebook" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.email ? (
+                  <a
+                    href={`mailto:${fields.email}`}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="email"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="envelope" prefix="fas" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.newsletter ? (
+                  <a
+                    href={fields.newsletter}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="newsletter"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="inbox" prefix="fas" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.podcast ? (
+                  <a
+                    href={fields.podcast}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="podcast"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="podcast" prefix="fas" />
+                    </span>
+                  </a>
+                ) : null
+              }
+              {
+                fields.meetup ? (
+                  <a
+                    href={fields.meetup}
+                    target="_blank"
+                    class="level-item"
+                    aria-label="meetup"
+                  >
+                    <span class="icon is-small has-text-primary">
+                      <Icon iconName="meetup" prefix="fab" />
+                    </span>
+                  </a>
+                ) : null
+              }
+            </div>
           </nav>
         </div>
       </article>
     </div>
     <div class="column">
       <span class="column-separator is-pulled-left is-hidden-mobile"></span>
-      <!-- <span
-				class="tag is-info is-light ml-2 mb-2"
-				v-for="tag in formatTags(entry.tags)"
-				:key="tag"
-				>{{ tag }}</span
-			> -->
+      {
+        fields.tags.map((tag) => {
+          return <span class="tag is-info is-light ml-2 mb-2">{tag}</span>;
+        })
+      }
     </div>
   </div>
 </div>
