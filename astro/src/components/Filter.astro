@@ -11,7 +11,7 @@ import Icon from "../components/Icon.astro";
     >
       Deine Auswahl
     </h2>
-    <div class="tags are-medium">
+    <div id="my-selection" class="tags are-medium">
       <!-- <span
         v-for="item in selectedFilter"
         :key="`selected-${item.key}`"
@@ -36,26 +36,15 @@ import Icon from "../components/Icon.astro";
       {
         filterData.interests.map((item) => {
           return (
-            <span class="tag is-primary is-light is-rounded is-normal">
+            <span
+              class="tag is-primary is-light is-rounded is-normal"
+              data-filter={item.key}
+            >
               {item.title}
             </span>
           );
         })
       }
-      <!-- <span
-        v-for="item in interests"
-        :key="item.key"
-        :class="[
-          'tag',
-          'is-primary',
-          'is-light',
-          'is-rounded',
-          'is-normal',
-          item.selected ? 'hide' : '',
-        ]"
-        @click="onSelect(item)"
-        >{{ item.title }}</span
-      > -->
     </div>
 
     <h2 class="subtitle is-size-6 mb-3 has-text-white">Format</h2>
@@ -63,7 +52,10 @@ import Icon from "../components/Icon.astro";
       {
         filterData.format.map((item) => {
           return (
-            <span class="tag is-primary is-light is-rounded is-normal">
+            <span
+              class="tag is-primary is-light is-rounded is-normal"
+              data-filter={item.key}
+            >
               <span class="icon mr-1">
                 <Icon iconName={item.icon.iconName} prefix={item.icon.prefix} />
               </span>
@@ -72,23 +64,6 @@ import Icon from "../components/Icon.astro";
           );
         })
       }
-      <!-- <span
-        v-for="item in format"
-        :key="item.key"
-        :class="[
-          'tag',
-          'is-primary',
-          'is-rounded',
-          'is-normal',
-          item.selected ? 'hide' : 'is-light',
-        ]"
-        @click="onSelect(item)"
-      >
-        <span class="icon mr-1">
-          <i :class="item.icon"></i>
-        </span>
-        {{ item.title }}
-      </span> -->
     </div>
 
     <h2 class="subtitle is-size-6 mb-3 has-text-white">Social Media</h2>
@@ -96,7 +71,10 @@ import Icon from "../components/Icon.astro";
       {
         filterData.social.map((item) => {
           return (
-            <span class="tag is-primary is-light is-rounded is-normal">
+            <span
+              class="tag is-primary is-light is-rounded is-normal"
+              data-filter={item.key}
+            >
               <span class="icon mr-1">
                 <Icon iconName={item.icon.iconName} prefix={item.icon.prefix} />
               </span>
@@ -105,24 +83,6 @@ import Icon from "../components/Icon.astro";
           );
         })
       }
-      <!-- <span
-        v-for="item in social"
-        :key="item.key"
-        :class="[
-          'tag',
-          'is-primary',
-          'is-light',
-          'is-rounded',
-          'is-normal',
-          item.selected ? 'hide' : '',
-        ]"
-        @click="onSelect(item)"
-      >
-        <span class="icon mr-1">
-          <i :class="item.icon"></i>
-        </span>
-        {{ item.title }}
-      </span> -->
     </div>
   </div>
 </div>

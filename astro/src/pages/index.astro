@@ -29,6 +29,7 @@ const fetchData = async () => {
             data.push(record._rawJson);
           });
 
+          console.log("fetch next page from airtable");
           // To fetch the next page of records, call `fetchNextPage`.
           // If there are more records, `page` will get called again.
           // If there are no more records, `done` will get called.
@@ -44,8 +45,9 @@ const fetchData = async () => {
   });
 };
 
-const results = await fetchData();
-// description="Coding-Initiativen finden, Initiativen auf Social Media folgen, YouTube Channels abonnieren, programmieren lernen, Technik verstehen, an Meetups teilnehmen, netzwerken, Hackerinnen kennenlernen, Hackerspaces besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT, Frauen in IT, Mentorinnen finden, lokale Communities finden, Nachwuchsförderungen, Frauen in der Informatik, fachlicher Austausch, Coding-Bootcamp, Workshops, Mentoring und Nachwuchsförderung für Frauen, Podcasts, Sichtbarkeit von Frauen in IT, Machine Learning, Robotics, KI"
+console.log("fetch data from airtable");
+// const results = await fetchData();
+const results = [];
 ---
 
 <Layout
@@ -66,6 +68,17 @@ const results = await fetchData();
             return null;
           })
         }
+        <p class="p-4 is-size-7">
+          Coding-Initiativen finden, Initiativen auf Social Media folgen,
+          YouTube Channels abonnieren, programmieren lernen, Technik verstehen,
+          an Meetups teilnehmen, netzwerken, Hackerinnen kennenlernen,
+          Hackerspaces besuchen, Newsletter abonnieren, vernetzen, Frauen und
+          Technik, MINT, Frauen in IT, Mentorinnen finden, lokale Communities
+          finden, Nachwuchsförderungen, Frauen in der Informatik, fachlicher
+          Austausch, Coding-Bootcamp, Workshops, Mentoring und
+          Nachwuchsförderung für Frauen, Podcasts, Sichtbarkeit von Frauen in
+          IT, Machine Learning, Robotics, KI
+        </p>
       </div>
     </div>
   </div>
@@ -76,3 +89,35 @@ const results = await fetchData();
     min-height: 80vh;
   }
 </style>
+
+<script>
+  let selectedTags = [];
+  const filterPills = document.querySelectorAll("[data-filter]");
+  const selectionContainer = document.getElementById("my-selection");
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      if (!selectedTags.includes(pill.getAttribute("data-filter"))) {
+        selectedTags.push(pill.getAttribute("data-filter"));
+
+        // clone pill and add delete button
+        const selectionPill = pill.cloneNode(true);
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.classList.add("is-small");
+
+        deleteButton.addEventListener("click", (ele) => {
+          selectedTags = selectedTags.filter(
+            (tag) =>
+              tag !== ele.target.parentElement.getAttribute("data-filter")
+          );
+          selectionContainer.removeChild(selectionPill);
+        });
+
+        // add selection pill to selection container
+        selectionPill.appendChild(deleteButton);
+        selectionContainer.append(selectionPill);
+      }
+    });
+  });
+</script>
