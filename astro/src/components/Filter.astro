@@ -11,26 +11,7 @@ import Icon from "../components/Icon.astro";
     >
       Deine Auswahl
     </h2>
-    <div id="my-selection" class="tags are-medium">
-      <!-- <span
-        v-for="item in selectedFilter"
-        :key="`selected-${item.key}`"
-        :class="[
-          'tag',
-          'is-primary',
-          'is-light',
-          'is-rounded',
-          'is-normal',
-          'selection',
-        ]"
-      >
-        <span v-if="item.icon" class="icon mr-1">
-          <i :class="item.icon"></i>
-        </span>
-        {{ item.title }}
-        <button @click="onSelect(item)" class="delete is-small"></button>
-      </span> -->
-    </div>
+    <div id="my-selection" class="tags are-medium"></div>
     <h2 class="subtitle is-size-6 mb-3 has-text-white">Interessen</h2>
     <div class="tags are-medium">
       {
