@@ -2,8 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Filter from "../components/Filter.astro";
-import type { Resource } from "../types";
+import type { Resource, EnhancedResource } from "../types";
+import { filterData } from "../data/filterData";
 import Airtable from "airtable";
+import chalk from "chalk";
 
 Airtable.configure({
   endpointUrl: "https://api.airtable.com",
@@ -29,13 +31,14 @@ const fetchData = async () => {
             data.push(record._rawJson);
           });
 
-          console.log("fetch next page from airtable");
+          console.log(`${chalk.blue("[airtable]")} Fetch next page...`);
           // To fetch the next page of records, call `fetchNextPage`.
           // If there are more records, `page` will get called again.
           // If there are no more records, `done` will get called.
           fetchNextPage();
         },
         function done(err) {
+          console.log(`${chalk.blue("[airtable]")} Done fetching data`);
           if (err) {
             return reject(err);
           }
@@ -45,9 +48,22 @@ const fetchData = async () => {
   });
 };
 
-console.log("fetch data from airtable");
-// const results = await fetchData();
-const results = [];
+console.log(`${chalk.blue("[airtable]")} Fetch data...`);
+let apiResults = await fetchData();
+
+apiResults.filter((result) => result.fields.public);
+
+const results = apiResults.map((result): EnhancedResource => {
+  let fields = Object.keys(result.fields);
+  let tags = [];
+  filterData.interests.forEach((item) => {
+    if (result.fields.tags.some((tag) => item.tags.includes(tag))) {
+      tags.push(item.key);
+    }
+  });
+  fields = [...fields, ...tags];
+  return { ...result, tags: fields };
+});
 ---
 
 <Layout
@@ -62,10 +78,9 @@ const results = [];
       <div class="column is-two-thirds">
         {
           results.map((result) => {
-            if (result.fields.public) {
-              return <Card fields={result.fields} id={result.id} />;
-            }
-            return null;
+            return (
+              <Card fields={result.fields} id={result.id} tags={result.tags} />
+            );
           })
         }
         <p class="p-4 is-size-7">
@@ -93,30 +108,58 @@ const results = [];
 <script>
   let selectedTags = [];
   const filterPills = document.querySelectorAll("[data-filter]");
-  const selectionContainer = document.getElementById("my-selection");
+  const cards = document.getElementsByClassName("card-selector");
+  const selectionContainer = document.getElementById("my-selection-selector");
+
+  const removeSelectionPill = (ele: Element, selectionPill: Node) => {
+    selectedTags = selectedTags.filter(
+      (tag) => tag !== ele.parentElement.getAttribute("data-filter")
+    );
+    selectionContainer.removeChild(selectionPill);
+    filterCards();
+  };
+
+  const addSelectionPill = (ele: Element) => {
+    // clone pill and add delete button
+    const selectionPill = ele.cloneNode(true);
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete");
+    deleteButton.classList.add("is-small");
+    deleteButton.addEventListener("click", (ele) => {
+      removeSelectionPill(ele.currentTarget as Element, selectionPill);
+    });
+
+    // add selection pill to selection container
+    selectionPill.appendChild(deleteButton);
+    selectionContainer.append(selectionPill);
+  };
+
+  const filterCards = () => {
+    Array.from(cards).forEach((card) => {
+      const cardTags = card.getAttribute("data-tags").split(",");
+      if (
+        selectedTags.length > 0 &&
+        !selectedTags.some((tag) => cardTags.includes(tag))
+      ) {
+        card.classList.add("is-hidden");
+      } else {
+        card.classList.remove("is-hidden");
+      }
+    });
+  };
 
   filterPills.forEach((pill) => {
-    pill.addEventListener("click", () => {
-      if (!selectedTags.includes(pill.getAttribute("data-filter"))) {
-        selectedTags.push(pill.getAttribute("data-filter"));
-
-        // clone pill and add delete button
-        const selectionPill = pill.cloneNode(true);
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("delete");
-        deleteButton.classList.add("is-small");
-
-        deleteButton.addEventListener("click", (ele) => {
-          selectedTags = selectedTags.filter(
-            (tag) =>
-              tag !== ele.target.parentElement.getAttribute("data-filter")
-          );
-          selectionContainer.removeChild(selectionPill);
-        });
-
-        // add selection pill to selection container
-        selectionPill.appendChild(deleteButton);
-        selectionContainer.append(selectionPill);
+    pill.addEventListener("click", (ele) => {
+      if (
+        !selectedTags.includes(
+          (ele.currentTarget as Element).getAttribute("data-filter")
+        )
+      ) {
+        selectedTags.push(
+          (ele.currentTarget as Element).getAttribute("data-filter")
+        );
+        addSelectionPill(ele.currentTarget as Element);
+        filterCards();
       }
     });
   });

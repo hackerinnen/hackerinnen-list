@@ -19,6 +19,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "airtable": "^0.11.6",
     "bulma": "^0.9.4",
+    "chalk": "^5.2.0",
     "sass": "^1.58.3"
   }
 }

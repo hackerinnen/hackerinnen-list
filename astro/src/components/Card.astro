@@ -1,13 +1,13 @@
 ---
-import type { Resource } from "../types";
+import type { EnhancedResource } from "../types";
 import Icon from "../components/Icon.astro";
 
-export interface CardProps extends Resource {}
+export interface CardProps extends EnhancedResource {}
 
-const { fields } = Astro.props as CardProps;
+const { fields, tags } = Astro.props as CardProps;
 ---
 
-<div class="box">
+<div class="box card-selector" data-tags={tags}>
   <div class="columns">
     <div class="column is-three-quarters">
       <article class="media">
@@ -17,6 +17,7 @@ const { fields } = Astro.props as CardProps;
           </figure>
         </div>
         <div class="media-content">
+          <div class="content">{tags.toString()}</div>
           <div class="content">
             <p>
               <strong>{fields.name}</strong>

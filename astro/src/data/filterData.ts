@@ -37,7 +37,7 @@ export const filterData = {
       tags: ["Community"],
     },
     {
-      key: "Vorbilder",
+      key: "rolemodels",
       title: "Vorbilder",
       selected: false,
       tags: ["Vorbilder"],
@@ -55,19 +55,19 @@ export const filterData = {
       tags: ["Mentoring"],
     },
     {
-      key: "Sichtbarkeit",
+      key: "visibility",
       title: "Sichtbarkeit",
       selected: false,
       tags: ["Sichtbarkeit"],
     },
     {
-      key: "mailingliste",
+      key: "mailinglist",
       title: "Mailingliste",
       selected: false,
       tags: ["Mailingliste"],
     },
     {
-      key: "karriere",
+      key: "career",
       title: "Karriere",
       selected: false,
       tags: ["Karriere"],

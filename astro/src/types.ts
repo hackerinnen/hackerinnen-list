@@ -31,3 +31,7 @@ export type Resource = {
   createdTime: string;
   fields: ResourceFields;
 };
+
+export interface EnhancedResource extends Resource {
+  tags: string[];
+}
