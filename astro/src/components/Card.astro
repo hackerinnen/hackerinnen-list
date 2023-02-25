@@ -13,7 +13,7 @@ const { fields, tags } = Astro.props as CardProps;
       <article class="media">
         <div class="media-left">
           <figure class="image is-16x16">
-            <Icon iconName="heart" prefix="far" />
+            <Icon iconName="heart" prefix="far" color={fields.brand} />
           </figure>
         </div>
         <div class="media-content">
@@ -57,7 +57,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="youtube"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="youtube" prefix="fab" />
                     </span>
                   </a>
@@ -71,7 +71,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="twitch"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="twitch" prefix="fab" />
                     </span>
                   </a>
@@ -85,7 +85,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="telegram"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="telegram" prefix="fab" />
                     </span>
                   </a>
@@ -99,7 +99,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="instagram"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="instagram" prefix="fab" />
                     </span>
                   </a>
@@ -113,7 +113,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="twitter"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="twitter" prefix="fab" />
                     </span>
                   </a>
@@ -127,7 +127,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="facebook"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="facebook" prefix="fab" />
                     </span>
                   </a>
@@ -141,7 +141,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="email"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="envelope" prefix="fas" />
                     </span>
                   </a>
@@ -155,7 +155,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="newsletter"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="inbox" prefix="fas" />
                     </span>
                   </a>
@@ -169,7 +169,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="podcast"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="podcast" prefix="fas" />
                     </span>
                   </a>
@@ -183,7 +183,7 @@ const { fields, tags } = Astro.props as CardProps;
                     class="level-item"
                     aria-label="meetup"
                   >
-                    <span class="icon is-small has-text-primary">
+                    <span class="is-small">
                       <Icon iconName="meetup" prefix="fab" />
                     </span>
                   </a>
@@ -205,7 +205,10 @@ const { fields, tags } = Astro.props as CardProps;
   </div>
 </div>
 
-<style lang="scss">
+<style
+  lang="scss"
+  define:vars={{ color: fields.brand ? fields.brand : "#2c3e50" }}
+>
   li {
     list-style-type: none;
   }

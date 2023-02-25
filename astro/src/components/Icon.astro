@@ -14,10 +14,10 @@ library.add(fas, fab, far);
 export interface IconProps {
   iconName: IconName;
   prefix: IconPrefix;
+  color: String;
 }
 
-const { iconName, prefix } = Astro.props as IconProps;
-
+const { iconName, prefix, color } = Astro.props as IconProps;
 let svg;
 try {
   svg = icon({ prefix, iconName }).html;
@@ -31,9 +31,14 @@ try {
   <Fragment set:html={svg} />
 </span>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ color }}>
   .fontawesome {
     width: 1em;
     display: inline-block;
+    color: var(--color);
+  }
+
+  svg path {
+    fill: var(--color);
   }
 </style>

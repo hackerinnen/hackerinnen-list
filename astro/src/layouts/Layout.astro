@@ -1,6 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
+import "../styles/styles.scss";
+
 export interface LayoutProps {
   title: string;
   description: string;
@@ -42,10 +44,6 @@ const { title, description } = Astro.props as LayoutProps;
       sizes="16x16"
       href="https://hackerinnen.space/favicon/favicon-16x16.png"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
   </head>
   <body>
     <main>
@@ -55,19 +53,3 @@ const { title, description } = Astro.props as LayoutProps;
     </main>
   </body>
 </html>
-
-<style is:global lang="scss">
-  $box-shadow: 0 0.1em 0.5em -0.125em rgb(10 10 10 / 10%),
-    0 0px 0 1px rgb(10 10 10 / 2%);
-  @import "../astro/node_modules/bulma/bulma.sass";
-
-  main {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    background-color: $primary;
-    background-color: rgba(0, 209, 178, 0.06);
-  }
-</style>
