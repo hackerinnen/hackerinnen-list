@@ -11,41 +11,42 @@ const { fields, tags } = Astro.props as CardProps;
   <div class="columns">
     <div class="column is-three-quarters">
       <article class="media">
-        <div class="media-left">
-          <figure class="image is-16x16">
-            <Icon iconName="heart" prefix="far" color={fields.brand} />
-          </figure>
-        </div>
         <div class="media-content">
           <div class="content">
-            <p>
-              <strong>{fields.name}</strong>
-              {
-                fields.language ? (
-                  <span class="tag language-tag is-light ml-2">
-                    {fields.language}
-                  </span>
-                ) : null
-              }
-              <br />
+            <div class="columns is-vcentered">
+              <div class="column">
+                <span class="title is-3">{fields.name}</span>
+              </div>
+              <div class="column">
+                {
+                  fields.language ? (
+                    <span class="tag language-tag is-medium is-light ml-2">
+                      {fields.language}
+                    </span>
+                  ) : null
+                }
+              </div>
+            </div>
+
+            <div class="py-2 is-size-5 has-text-weight-medium">
               {fields.description}
-              <br />
-              {
-                fields.book ? (
-                  <small>
-                    <a href={fields.website} target="_blank">
-                      Buch auf Thalia anschauen
-                    </a>
-                  </small>
-                ) : (
-                  <small>
-                    <a href={fields.website} target="_blank">
-                      {fields.website}
-                    </a>
-                  </small>
-                )
-              }
-            </p>
+            </div>
+
+            {
+              fields.book ? (
+                <small>
+                  <a href={fields.website} target="_blank">
+                    Buch auf Thalia anschauen
+                  </a>
+                </small>
+              ) : (
+                <small>
+                  <a href={fields.website} target="_blank">
+                    {fields.website}
+                  </a>
+                </small>
+              )
+            }
           </div>
           <nav class="level is-mobile">
             <div class="level-left">
@@ -198,7 +199,7 @@ const { fields, tags } = Astro.props as CardProps;
       <span class="column-separator is-pulled-left is-hidden-mobile"></span>
       {
         fields.tags.map((tag) => {
-          return <span class="tag is-info is-light ml-2 mb-2">{tag}</span>;
+          return <span class="tag is-medium is-light ml-2 mb-2">{tag}</span>;
         })
       }
     </div>
@@ -220,6 +221,6 @@ const { fields, tags } = Astro.props as CardProps;
     height: 100%;
   }
   .language-tag {
-    height: 1.5em;
+    vertical-align: middle;
   }
 </style>

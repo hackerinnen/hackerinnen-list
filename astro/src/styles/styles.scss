@@ -1,14 +1,10 @@
-@import "../astro/node_modules/bulma/bulma.sass";
-
+$family-sans-serif: Avenir, Helvetica, Arial, sans-serif;
 $box-shadow: 0 0.1em 0.5em -0.125em rgb(10 10 10 / 10%),
   0 0px 0 1px rgb(10 10 10 / 2%);
 
+@import "../astro/node_modules/bulma/bulma.sass";
+
 main {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   background-color: $primary;
   background-color: rgba(0, 209, 178, 0.06);
 }

@@ -7,18 +7,20 @@ import Icon from "../components/Icon.astro";
   <div class="content p-4">
     <h2
       v-if="selectedFilter.length > 0"
-      class="subtitle is-size-6 mb-3 has-text-white"
+      class="subtitle is-size-6 is-uppercase mb-3 has-text-white"
     >
       Deine Auswahl
     </h2>
     <div id="my-selection-selector" class="tags are-medium"></div>
-    <h2 class="subtitle is-size-6 mb-3 has-text-white">Interessen</h2>
+    <h2 class="subtitle is-size-6 is-uppercase mb-3 has-text-white">
+      Interessen
+    </h2>
     <div class="tags are-medium">
       {
         filterData.interests.map((item) => {
           return (
             <span
-              class="tag is-primary is-light is-rounded is-normal"
+              class="tag is-primary is-light is-rounded are-medium"
               data-filter={item.key}
             >
               {item.title}
@@ -28,13 +30,13 @@ import Icon from "../components/Icon.astro";
       }
     </div>
 
-    <h2 class="subtitle is-size-6 mb-3 has-text-white">Format</h2>
+    <h2 class="subtitle is-size-6 is-uppercase mb-3 has-text-white">Format</h2>
     <div class="tags are-medium">
       {
         filterData.format.map((item) => {
           return (
             <span
-              class="tag is-primary is-light is-rounded is-normal"
+              class="tag is-primary is-light is-rounded are-medium"
               data-filter={item.key}
             >
               <span class="icon mr-1">
@@ -47,13 +49,15 @@ import Icon from "../components/Icon.astro";
       }
     </div>
 
-    <h2 class="subtitle is-size-6 mb-3 has-text-white">Social Media</h2>
+    <h2 class="subtitle is-size-6 is-uppercase mb-3 has-text-white">
+      Social Media
+    </h2>
     <div class="tags are-medium">
       {
         filterData.social.map((item) => {
           return (
             <span
-              class="tag is-primary is-light is-rounded is-normal"
+              class="tag is-primary is-light is-rounded are-medium"
               data-filter={item.key}
             >
               <span class="icon mr-1">

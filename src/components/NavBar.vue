@@ -4,7 +4,7 @@
       <div class="navbar-start">
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless">
-            <span class="title mb-2 is-3 is-size-4-mobile">
+            <span class="title mb-2 is-1 is-size-4-mobile">
               Hackerinnen Links
             </span>
             <i
