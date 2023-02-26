@@ -7,60 +7,62 @@ export interface CardProps extends EnhancedResource {}
 const { fields, tags } = Astro.props as CardProps;
 ---
 
-<div class="box card-selector" data-tags={tags}>
+<div class="box pt-6 pr-5 pl-6 pb-5 card-selector" data-tags={tags}>
   <div class="columns">
     <div class="column is-three-quarters">
       <article class="media">
         <div class="media-content">
           <div class="content">
-            <div class="columns is-vcentered">
-              <div class="column">
-                <span class="title is-3">{fields.name}</span>
-              </div>
-              <div class="column">
-                {
-                  fields.language ? (
-                    <span class="tag language-tag is-medium is-light ml-2">
-                      {fields.language}
-                    </span>
-                  ) : null
-                }
-              </div>
+            <div>
+              <span class="title is-3" style="vertical-align: middle;"
+                >{fields.name}</span
+              >
+              {
+                fields.language ? (
+                  <span
+                    class="tag is-medium is-family-monospace is-light ml-2"
+                    style="vertical-align: middle;"
+                  >
+                    {fields.language}
+                  </span>
+                ) : null
+              }
             </div>
 
             <div class="py-2 is-size-5 has-text-weight-medium">
               {fields.description}
             </div>
-
             {
               fields.book ? (
-                <small>
-                  <a href={fields.website} target="_blank">
-                    Buch auf Thalia anschauen
-                  </a>
-                </small>
+                <a
+                  href={fields.website}
+                  target="_blank"
+                  class="is-size-5 is-underlined"
+                >
+                  Buch auf Thalia
+                </a>
               ) : (
-                <small>
-                  <a href={fields.website} target="_blank">
-                    {fields.website}
-                  </a>
-                </small>
+                <a
+                  href={fields.website}
+                  target="_blank"
+                  class="is-size-5 is-underlined"
+                >
+                  {fields.website}
+                </a>
               )
             }
           </div>
-          <nav class="level is-mobile">
+          <nav class="level is-mobile mt-6">
             <div class="level-left">
               {
                 fields.youtube ? (
                   <a
                     href="fields.youtube"
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="youtube"
                   >
-                    <span class="is-small">
-                      <Icon iconName="youtube" prefix="fab" />
-                    </span>
+                    <Icon iconName="youtube" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -69,12 +71,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href="fields.twitch"
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="twitch"
                   >
-                    <span class="is-small">
-                      <Icon iconName="twitch" prefix="fab" />
-                    </span>
+                    <Icon iconName="twitch" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -83,12 +83,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.telegram}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="telegram"
                   >
-                    <span class="is-small">
-                      <Icon iconName="telegram" prefix="fab" />
-                    </span>
+                    <Icon iconName="telegram" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -97,12 +95,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.instagram}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="instagram"
                   >
-                    <span class="is-small">
-                      <Icon iconName="instagram" prefix="fab" />
-                    </span>
+                    <Icon iconName="instagram" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -111,12 +107,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.twitter}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="twitter"
                   >
-                    <span class="is-small">
-                      <Icon iconName="twitter" prefix="fab" />
-                    </span>
+                    <Icon iconName="twitter" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -125,12 +119,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.facebook}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="facebook"
                   >
-                    <span class="is-small">
-                      <Icon iconName="facebook" prefix="fab" />
-                    </span>
+                    <Icon iconName="facebook" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -139,12 +131,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={`mailto:${fields.email}`}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="email"
                   >
-                    <span class="is-small">
-                      <Icon iconName="envelope" prefix="fas" />
-                    </span>
+                    <Icon iconName="envelope" prefix="fas" />
                   </a>
                 ) : null
               }
@@ -153,12 +143,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.newsletter}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="newsletter"
                   >
-                    <span class="is-small">
-                      <Icon iconName="inbox" prefix="fas" />
-                    </span>
+                    <Icon iconName="inbox" prefix="fas" />
                   </a>
                 ) : null
               }
@@ -167,12 +155,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.podcast}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="podcast"
                   >
-                    <span class="is-small">
-                      <Icon iconName="podcast" prefix="fas" />
-                    </span>
+                    <Icon iconName="podcast" prefix="fas" />
                   </a>
                 ) : null
               }
@@ -181,12 +167,10 @@ const { fields, tags } = Astro.props as CardProps;
                   <a
                     href={fields.meetup}
                     target="_blank"
-                    class="level-item"
+                    class="level-item icon"
                     aria-label="meetup"
                   >
-                    <span class="is-small">
-                      <Icon iconName="meetup" prefix="fab" />
-                    </span>
+                    <Icon iconName="meetup" prefix="fab" />
                   </a>
                 ) : null
               }
@@ -197,30 +181,33 @@ const { fields, tags } = Astro.props as CardProps;
     </div>
     <div class="column">
       <span class="column-separator is-pulled-left is-hidden-mobile"></span>
-      {
-        fields.tags.map((tag) => {
-          return <span class="tag is-medium is-light ml-2 mb-2">{tag}</span>;
-        })
-      }
+      <div class="has-text-right">
+        {
+          fields.tags.map((tag) => {
+            return (
+              <p class="tag is-medium is-family-monospace is-light mb-2">
+                {tag}
+              </p>
+            );
+          })
+        }
+      </div>
     </div>
   </div>
-</div>
 
-<style
-  lang="scss"
-  define:vars={{ color: fields.brand ? fields.brand : "#2c3e50" }}
->
-  li {
-    list-style-type: none;
-  }
-  .media-content {
-    text-align: left;
-  }
-  .column-separator {
-    border-left: 1px solid rgb(10 10 10 / 5%);
-    height: 100%;
-  }
-  .language-tag {
-    vertical-align: middle;
-  }
-</style>
+  <style
+    lang="scss"
+    define:vars={{ color: fields.brand ? fields.brand : "#2c3e50" }}
+  >
+    .media-content {
+      text-align: left;
+    }
+    .column-separator {
+      border-left: 1px solid rgb(10 10 10 / 5%);
+      height: 100%;
+    }
+    .language-tag {
+      vertical-align: middle;
+    }
+  </style>
+</div>

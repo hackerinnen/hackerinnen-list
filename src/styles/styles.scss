@@ -1,12 +1,10 @@
 $family-sans-serif: Avenir, Helvetica, Arial, sans-serif;
-$box-shadow: 0 0.1em 0.5em -0.125em rgb(10 10 10 / 10%),
-  0 0px 0 1px rgb(10 10 10 / 2%);
+$link: black;
 
 @import "../node_modules/bulma/bulma.sass";
 
 main {
-  background-color: $primary;
-  background-color: rgba(0, 209, 178, 0.06);
+  background-color: hsl(171, 100%, 95%);
 }
 
 svg {

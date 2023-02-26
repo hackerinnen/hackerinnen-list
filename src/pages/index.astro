@@ -20,7 +20,7 @@ const fetchData = async () => {
     let data: Resource[] = [];
     base("tblEnh7pNKnZSwgdl")
       .select({
-        maxRecords: 300,
+        maxRecords: 1,
         view: "Grid view",
       })
       .eachPage(
@@ -49,7 +49,30 @@ const fetchData = async () => {
 };
 
 console.log(`${chalk.blue("[airtable]")} Fetch data...`);
-let apiResults = await fetchData();
+//let apiResults = await fetchData();
+let apiResults = [
+  {
+    id: "recuh0juKvtgwhutO",
+    createdTime: "2023-02-21T10:09:32.000Z",
+    fields: {
+      name: "AchNina",
+      public: true,
+      description:
+        "Nina baut zusammen mit ihrer Community im Livestream Roboter die das Leben erleichtern oder einfach nur Spaß machen. Es wird gelötet, gebastelt oder 3D gedruckt.",
+      tags: ["Vorbilder", "Streamer"],
+      website: "https://www.twitch.tv/achnina",
+      twitter: "https://twitter.com/achninaa",
+      instagram: "https://instagram.com/achninaa",
+      youtube: "http://www.youtube.com/c/achNina",
+      twitch: "https://www.twitch.tv/achnina",
+      region: "Deutschland",
+      cities: [],
+      language: ["DE"],
+      "create date": "2021-02-12",
+      "update date": "2021-02-12",
+    },
+  },
+];
 
 apiResults.filter((result) => result.fields.public);
 
@@ -70,7 +93,7 @@ const results = apiResults.map((result): EnhancedResource => {
   title="Hackerinnen Links"
   description="Diese Linksammlung soll Initiativen, Projekte und Communities sichtbar machen und helfen, dass sich Frauen in IT im Internet finden, inspirieren, austauschen und vernetzen können"
 >
-  <div class="container is-fullhd py-5">
+  <div class="container is-fullhd py-6">
     <div class="columns">
       <div class="column">
         <Filter />
@@ -83,7 +106,7 @@ const results = apiResults.map((result): EnhancedResource => {
             );
           })
         }
-        <p class="p-4 is-size-7">
+        <p class="p-4 is-size-6">
           Coding-Initiativen finden, Initiativen auf Social Media folgen,
           YouTube Channels abonnieren, programmieren lernen, Technik verstehen,
           an Meetups teilnehmen, netzwerken, Hackerinnen kennenlernen,
@@ -125,7 +148,7 @@ const results = apiResults.map((result): EnhancedResource => {
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete");
     deleteButton.classList.add("is-small");
-    deleteButton.addEventListener("click", (ele) => {
+    selectionPill.addEventListener("click", (ele) => {
       removeSelectionPill(ele.currentTarget as Element, selectionPill);
     });
 

@@ -1,0 +1,21 @@
+---
+export interface TagProps {
+  key: String;
+}
+
+const { key } = Astro.props as TagProps;
+---
+
+<span class="tag is-primary is-light is-family-monospace" data-filter={key}>
+  <slot />
+</span>
+
+<style lang="scss">
+  .tag {
+    cursor: pointer;
+  }
+
+  .tag:hover {
+    background-color: white !important;
+  }
+</style>

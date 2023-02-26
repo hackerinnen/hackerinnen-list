@@ -1,10 +1,11 @@
 ---
 import { filterData } from "../data/filterData";
 import Icon from "../components/Icon.astro";
+import Tag from "../components/Tag.astro";
 ---
 
 <div class="sidebar has-background-primary has-text-left">
-  <div class="content p-4">
+  <div class="content p-5">
     <h2
       v-if="selectedFilter.length > 0"
       class="subtitle is-size-6 is-uppercase mb-3 has-text-white"
@@ -19,12 +20,9 @@ import Icon from "../components/Icon.astro";
       {
         filterData.interests.map((item) => {
           return (
-            <span
-              class="tag is-primary is-light is-rounded are-medium"
-              data-filter={item.key}
-            >
+            <Tag key={item.key} size="1em">
               {item.title}
-            </span>
+            </Tag>
           );
         })
       }
@@ -35,15 +33,16 @@ import Icon from "../components/Icon.astro";
       {
         filterData.format.map((item) => {
           return (
-            <span
-              class="tag is-primary is-light is-rounded are-medium"
-              data-filter={item.key}
-            >
+            <Tag key={item.key}>
               <span class="icon mr-1">
-                <Icon iconName={item.icon.iconName} prefix={item.icon.prefix} />
+                <Icon
+                  iconName={item.icon.iconName}
+                  prefix={item.icon.prefix}
+                  size="1em"
+                />
               </span>
               {item.title}
-            </span>
+            </Tag>
           );
         })
       }
@@ -56,15 +55,16 @@ import Icon from "../components/Icon.astro";
       {
         filterData.social.map((item) => {
           return (
-            <span
-              class="tag is-primary is-light is-rounded are-medium"
-              data-filter={item.key}
-            >
+            <Tag key={item.key}>
               <span class="icon mr-1">
-                <Icon iconName={item.icon.iconName} prefix={item.icon.prefix} />
+                <Icon
+                  iconName={item.icon.iconName}
+                  prefix={item.icon.prefix}
+                  size="1em"
+                />
               </span>
               {item.title}
-            </span>
+            </Tag>
           );
         })
       }
@@ -76,23 +76,5 @@ import Icon from "../components/Icon.astro";
   .sidebar {
     width: 100%;
     border-radius: 12px;
-  }
-
-  .tag {
-    cursor: pointer;
-  }
-
-  .tag:hover {
-    background-color: white;
-  }
-
-  .tag.selection {
-    background-color: #ebfffc;
-    cursor: inherit;
-  }
-
-  .tag.hide,
-  .tag.hide:hover {
-    display: none;
   }
 </style>

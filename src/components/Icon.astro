@@ -15,9 +15,10 @@ export interface IconProps {
   iconName: IconName;
   prefix: IconPrefix;
   color: String;
+  size: String;
 }
 
-const { iconName, prefix, color } = Astro.props as IconProps;
+const { iconName, prefix, color, size } = Astro.props as IconProps;
 let svg;
 try {
   svg = icon({ prefix, iconName }).html;
@@ -31,9 +32,9 @@ try {
   <Fragment set:html={svg} />
 </span>
 
-<style lang="scss" define:vars={{ color }}>
+<style lang="scss" define:vars={{ color, size: size ? size : "2em" }}>
   .fontawesome {
-    width: 1em;
+    width: var(--size);
     display: inline-block;
     color: var(--color);
   }

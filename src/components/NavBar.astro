@@ -10,24 +10,19 @@ import Icon from "./Icon.astro";
           <span class="title mb-2 is-3 is-size-4-mobile">
             Hackerinnen Links
           </span>
-          <figure
-            class="image is-16x16 has-text-primary is-hidden-mobile question-mark"
-          >
-            <Icon iconName="question-circle" prefix="far" />
+          <figure class="image has-text-primary is-hidden-mobile question-mark">
+            <Icon iconName="question-circle" prefix="far" size="1.2em" />
           </figure>
         </a>
         <div class="navbar-dropdown p-3">
           Diese Linksammlung soll Initiativen, Projekte und Communities sichtbar
-          machen und helfen, dass sich Hackerinnen
-          <small>(und die, die es werden wollen)</small> im Internet finden, inspirieren,
-          austauschen und vernetzen können.
+          machen und helfen, dass sich Hackerinnen (und die, die es werden
+          wollen) im Internet finden, inspirieren, austauschen und vernetzen
+          können.
         </div>
       </div>
-      <div class="navbar-item is-hidden-mobile">
+      <div class="navbar-item is-hidden-mobile is-size-5 ml-4">
         Eine kuratierte Linksammlung
-        <!-- <a href="https://hackerinnen.space" class="navbar-link is-arrowless"
-          >kuratiert von Hackerinnen.space</a
-        > -->
       </div>
     </div>
     <div class="navbar-end is-hidden-mobile">
@@ -44,9 +39,9 @@ import Icon from "./Icon.astro";
     font-weight: 700;
   }
   .image.question-mark {
-    top: 6px;
+    top: 2px;
     position: absolute;
-    right: -6px;
+    right: -8px;
   }
 
   .navbar-item.has-dropdown:hover .navbar-link {
