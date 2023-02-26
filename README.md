@@ -1,5 +1,3 @@
-# Hackerinnen Links
-
 ### Eine kuratierte Linksammlung
 
 Diese Linksammlung soll Initiativen, Projekte und Communities
@@ -9,32 +7,43 @@ inspirieren, austauschen und vernetzen können.
 
 Unter Hackerinnen verstehen wir nicht-männliche Personen die sich für Computer und Technik interessieren.
 
-## Project setup
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
 
 ```
-yarn install
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   └── Card.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-### Compiles and hot-reloads for development
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-```
-yarn serve
-```
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-### Compiles and minifies for production
+Any static assets, like images, can be placed in the `public/` directory.
 
-```
-yarn build
-```
+## 🧞 Commands
 
-### Lints and fixes files
+All commands are run from the root of the project, from a terminal:
 
-```
-yarn lint
-```
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:3000`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro --help` | Get help using the Astro CLI                     |
 
-### Run tests
+## 👀 Want to learn more?
 
-```
-yarn test:unit
-```
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
