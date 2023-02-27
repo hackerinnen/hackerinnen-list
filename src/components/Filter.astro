@@ -69,6 +69,26 @@ import Tag from "../components/Tag.astro";
         })
       }
     </div>
+
+    <h2 class="subtitle is-size-6 is-uppercase mb-3 has-text-white">Sprache</h2>
+    <div class="tags are-medium">
+      {
+        filterData.language.map((item) => {
+          return <Tag key={item.key}>{item.title}</Tag>;
+        })
+      }
+    </div>
+
+    <h2 class="subtitle is-size-6 is-uppercase mb-3 has-text-white">
+      Zielgruppe
+    </h2>
+    <div class="tags are-medium">
+      {
+        filterData.audience.map((item) => {
+          return <Tag key={item.key}>{item.title}</Tag>;
+        })
+      }
+    </div>
   </div>
 </div>
 

@@ -3,73 +3,56 @@ export const filterData = {
     {
       key: "conference",
       title: "Konferenzen",
-      selected: false,
       tags: ["Konferenz"],
     },
     {
       key: "initiative",
       title: "Initiativen",
-      selected: false,
       tags: ["Initiative"],
     },
     {
       key: "hackspace",
       title: "Hackspace",
-      selected: false,
       tags: ["Hackspace"],
     },
     {
       key: "network",
       title: "Netzwerk",
-      selected: false,
       tags: ["Netzwerk"],
     },
     {
       key: "lokal",
       title: "lokale Angebote",
-      selected: false,
       tags: ["lokale Community", "lokale Angebote"],
     },
     {
       key: "community",
       title: "Communities",
-      selected: false,
       tags: ["Community"],
     },
     {
       key: "rolemodels",
       title: "Vorbilder",
-      selected: false,
       tags: ["Vorbilder"],
     },
     {
       key: "code",
       title: "Programmieren lernen",
-      selected: false,
       tags: ["Workshops", "Tutorial", "Kurse", "Bootcamp"],
     },
     {
       key: "mentorship",
       title: "Mentoring",
-      selected: false,
       tags: ["Mentoring"],
     },
     {
       key: "visibility",
       title: "Sichtbarkeit",
-      selected: false,
       tags: ["Sichtbarkeit"],
-    },
-    {
-      key: "mailinglist",
-      title: "Mailingliste",
-      selected: false,
-      tags: ["Mailingliste"],
     },
     {
       key: "career",
       title: "Karriere",
-      selected: false,
       tags: ["Karriere"],
     },
   ],
@@ -82,7 +65,6 @@ export const filterData = {
         iconName: "inbox",
         prefix: "fas",
       },
-      selected: false,
     },
     {
       key: "telegram",
@@ -91,7 +73,6 @@ export const filterData = {
         iconName: "telegram",
         prefix: "fab",
       },
-      selected: false,
     },
     {
       key: "youtube",
@@ -100,7 +81,6 @@ export const filterData = {
         iconName: "youtube",
         prefix: "fab",
       },
-      selected: false,
     },
     {
       key: "twitch",
@@ -109,14 +89,7 @@ export const filterData = {
         iconName: "twitch",
         prefix: "fab",
       },
-      selected: false,
     },
-    // {
-    //   key: "tiktok",
-    //   title: "TikTok",
-    //   icon: "fab fa-tiktok",
-    //   selected: false,
-    // },
     {
       key: "podcast",
       title: "Podcast",
@@ -124,7 +97,6 @@ export const filterData = {
         iconName: "podcast",
         prefix: "fas",
       },
-      selected: false,
     },
     {
       key: "book",
@@ -133,7 +105,6 @@ export const filterData = {
         iconName: "book",
         prefix: "fas",
       },
-      selected: false,
     },
     {
       key: "meetup",
@@ -142,7 +113,15 @@ export const filterData = {
         iconName: "meetup",
         prefix: "fab",
       },
-      selected: false,
+    },
+    {
+      key: "mailinglist",
+      title: "Mailingliste",
+      icon: {
+        iconName: "envelope",
+        prefix: "fas",
+      },
+      tags: ["Mailingliste"],
     },
   ],
   social: [
@@ -153,7 +132,6 @@ export const filterData = {
         iconName: "twitter",
         prefix: "fab",
       },
-      selected: false,
     },
     {
       key: "instagram",
@@ -162,7 +140,6 @@ export const filterData = {
         iconName: "instagram",
         prefix: "fab",
       },
-      selected: false,
     },
     {
       key: "facebook",
@@ -171,16 +148,30 @@ export const filterData = {
         iconName: "facebook",
         prefix: "fab",
       },
-      selected: false,
+    },
+    {
+      key: "tiktok",
+      title: "TikTok",
+      icon: {
+        iconName: "tiktok",
+        prefix: "fab",
+      },
+    },
+    {
+      key: "linkedin",
+      title: "LinkedIn",
+      icon: {
+        iconName: "linkedin",
+        prefix: "fab",
+      },
     },
   ],
   language: [
-    { key: "de", title: "DE", selected: false },
-    { key: "en", title: "EN", selected: false },
+    { key: "DE", title: "DE" },
+    { key: "EN", title: "EN" },
   ],
   audience: [
-    { key: "pupil", title: "Schüler", selected: false },
-    // { key: "student", title: "Student", selected: false },
-    { key: "adult", title: "Ab 16", selected: false },
+    { key: "kids", title: "Kinder" },
+    { key: "adults", title: "Erwachsene" },
   ],
 };

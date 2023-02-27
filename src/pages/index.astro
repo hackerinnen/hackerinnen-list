@@ -84,7 +84,12 @@ const results = apiResults.map((result): EnhancedResource => {
       tags.push(item.key);
     }
   });
-  fields = [...fields, ...tags];
+  fields = [
+    ...fields,
+    ...tags,
+    ...result.fields.language,
+    ...result.fields.audience,
+  ];
   return { ...result, tags: fields };
 });
 ---
@@ -136,7 +141,7 @@ const results = apiResults.map((result): EnhancedResource => {
 
   const removeSelectionPill = (ele: Element, selectionPill: Node) => {
     selectedTags = selectedTags.filter(
-      (tag) => tag !== ele.parentElement.getAttribute("data-filter")
+      (tag) => tag !== ele.getAttribute("data-filter")
     );
     selectionContainer.removeChild(selectionPill);
     filterCards();
