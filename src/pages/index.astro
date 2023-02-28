@@ -61,12 +61,16 @@ const results = apiResults.map((result): EnhancedResource => {
       tags.push(item.key);
     }
   });
-  fields = [
-    ...fields,
-    ...tags,
-    ...result.fields.language,
-    ...result.fields.audience,
-  ];
+
+  fields = [...fields, ...tags];
+
+  if (result.fields.language) {
+    fields = [...fields, ...result.fields.language];
+  }
+
+  if (result.fields.audience) {
+    fields = [...fields, ...result.fields.audience];
+  }
   return { ...result, tags: fields };
 });
 ---
