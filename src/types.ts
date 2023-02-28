@@ -21,7 +21,8 @@ type ResourceFields = {
   kids: boolean;
   region: string;
   cities: string[];
-  language: string;
+  language: string[];
+  audience: string[];
   "create date": string;
   "update date": string;
 };

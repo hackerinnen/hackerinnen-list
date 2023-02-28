@@ -49,30 +49,7 @@ const fetchData = async () => {
 };
 
 console.log(`${chalk.blue("[airtable]")} Fetch data...`);
-//let apiResults = await fetchData();
-let apiResults = [
-  {
-    id: "recuh0juKvtgwhutO",
-    createdTime: "2023-02-21T10:09:32.000Z",
-    fields: {
-      name: "AchNina",
-      public: true,
-      description:
-        "Nina baut zusammen mit ihrer Community im Livestream Roboter die das Leben erleichtern oder einfach nur Spaß machen. Es wird gelötet, gebastelt oder 3D gedruckt.",
-      tags: ["Vorbilder", "Streamer"],
-      website: "https://www.twitch.tv/achnina",
-      twitter: "https://twitter.com/achninaa",
-      instagram: "https://instagram.com/achninaa",
-      youtube: "http://www.youtube.com/c/achNina",
-      twitch: "https://www.twitch.tv/achnina",
-      region: "Deutschland",
-      cities: [],
-      language: ["DE"],
-      "create date": "2021-02-12",
-      "update date": "2021-02-12",
-    },
-  },
-];
+let apiResults = await fetchData();
 
 apiResults.filter((result) => result.fields.public);
 
