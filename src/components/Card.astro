@@ -7,164 +7,165 @@ export interface CardProps extends EnhancedResource {}
 const { fields, tags } = Astro.props as CardProps;
 ---
 
-<div class="box pt-6 pr-5 pl-6 pb-5 card-selector" data-tags={tags}>
+<div class="box py-6 px-5 card-selector" data-tags={tags}>
   <div class="columns">
     <div class="column is-three-quarters">
-      <article class="media">
-        <div class="media-content">
-          <div class="content">
-            <div>
-              <span class="title is-3" style="vertical-align: middle;"
-                >{fields.name}</span
+      <article class="content">
+        <div>
+          <span
+            class="title is-3 is-size-4-mobile"
+            style="vertical-align: middle;">{fields.name}</span
+          >
+          {
+            fields.language ? (
+              <span
+                class="tag is-medium is-family-monospace is-light ml-2"
+                style="vertical-align: middle;"
               >
-              {
-                fields.language ? (
-                  <span
-                    class="tag is-medium is-family-monospace is-light ml-2"
-                    style="vertical-align: middle;"
-                  >
-                    {fields.language}
-                  </span>
-                ) : null
-              }
-            </div>
+                {fields.language}
+              </span>
+            ) : null
+          }
+        </div>
 
-            <div class="py-2 is-size-5 has-text-weight-medium">
-              {fields.description}
-            </div>
+        <div class="py-2 is-size-5 has-text-weight-medium">
+          {fields.description}
+        </div>
+        {
+          fields.website ? (
+            <a
+              href={fields.website}
+              target="_blank"
+              class="is-size-5 is-underlined word-break"
+            >
+              {fields.book ? "Buch auf Thalia" : fields.website}
+            </a>
+          ) : null
+        }
+        <nav class="level is-mobile mt-6">
+          <div class="level-left">
             {
-              fields.website ? (
-                <a href={fields.website} target="_blank" class="is-size-5 is-underlined">
-                  { fields.book ? "Buch auf Thalia" : fields.website }
+              fields.youtube ? (
+                <a
+                  href="fields.youtube"
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="youtube"
+                >
+                  <Icon iconName="youtube" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.twitch ? (
+                <a
+                  href="fields.twitch"
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="twitch"
+                >
+                  <Icon iconName="twitch" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.telegram ? (
+                <a
+                  href={fields.telegram}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="telegram"
+                >
+                  <Icon iconName="telegram" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.instagram ? (
+                <a
+                  href={fields.instagram}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="instagram"
+                >
+                  <Icon iconName="instagram" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.twitter ? (
+                <a
+                  href={fields.twitter}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="twitter"
+                >
+                  <Icon iconName="twitter" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.facebook ? (
+                <a
+                  href={fields.facebook}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="facebook"
+                >
+                  <Icon iconName="facebook" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.email ? (
+                <a
+                  href={`mailto:${fields.email}`}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="email"
+                >
+                  <Icon iconName="envelope" prefix="fas" />
+                </a>
+              ) : null
+            }
+            {
+              fields.newsletter ? (
+                <a
+                  href={fields.newsletter}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="newsletter"
+                >
+                  <Icon iconName="inbox" prefix="fas" />
+                </a>
+              ) : null
+            }
+            {
+              fields.podcast ? (
+                <a
+                  href={fields.podcast}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="podcast"
+                >
+                  <Icon iconName="podcast" prefix="fas" />
+                </a>
+              ) : null
+            }
+            {
+              fields.meetup ? (
+                <a
+                  href={fields.meetup}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="meetup"
+                >
+                  <Icon iconName="meetup" prefix="fab" />
                 </a>
               ) : null
             }
           </div>
-          <nav class="level is-mobile mt-6">
-            <div class="level-left">
-              {
-                fields.youtube ? (
-                  <a
-                    href="fields.youtube"
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="youtube"
-                  >
-                    <Icon iconName="youtube" prefix="fab" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.twitch ? (
-                  <a
-                    href="fields.twitch"
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="twitch"
-                  >
-                    <Icon iconName="twitch" prefix="fab" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.telegram ? (
-                  <a
-                    href={fields.telegram}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="telegram"
-                  >
-                    <Icon iconName="telegram" prefix="fab" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.instagram ? (
-                  <a
-                    href={fields.instagram}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="instagram"
-                  >
-                    <Icon iconName="instagram" prefix="fab" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.twitter ? (
-                  <a
-                    href={fields.twitter}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="twitter"
-                  >
-                    <Icon iconName="twitter" prefix="fab" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.facebook ? (
-                  <a
-                    href={fields.facebook}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="facebook"
-                  >
-                    <Icon iconName="facebook" prefix="fab" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.email ? (
-                  <a
-                    href={`mailto:${fields.email}`}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="email"
-                  >
-                    <Icon iconName="envelope" prefix="fas" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.newsletter ? (
-                  <a
-                    href={fields.newsletter}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="newsletter"
-                  >
-                    <Icon iconName="inbox" prefix="fas" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.podcast ? (
-                  <a
-                    href={fields.podcast}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="podcast"
-                  >
-                    <Icon iconName="podcast" prefix="fas" />
-                  </a>
-                ) : null
-              }
-              {
-                fields.meetup ? (
-                  <a
-                    href={fields.meetup}
-                    target="_blank"
-                    class="level-item icon"
-                    aria-label="meetup"
-                  >
-                    <Icon iconName="meetup" prefix="fab" />
-                  </a>
-                ) : null
-              }
-            </div>
-          </nav>
-        </div>
+        </nav>
       </article>
     </div>
     <div class="column">
@@ -173,7 +174,7 @@ const { fields, tags } = Astro.props as CardProps;
         {
           fields.tags.map((tag) => {
             return (
-              <p class="tag is-medium is-family-monospace is-light mb-2">
+              <p class="tag is-medium is-family-monospace is-light mb-2 ml-2">
                 {tag}
               </p>
             );
@@ -193,6 +194,9 @@ const { fields, tags } = Astro.props as CardProps;
     }
     .language-tag {
       vertical-align: middle;
+    }
+    .word-break {
+      word-break: break-all;
     }
   </style>
 </div>
