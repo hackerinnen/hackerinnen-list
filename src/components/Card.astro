@@ -33,23 +33,11 @@ const { fields, tags } = Astro.props as CardProps;
               {fields.description}
             </div>
             {
-              fields.book ? (
-                <a
-                  href={fields.website}
-                  target="_blank"
-                  class="is-size-5 is-underlined"
-                >
-                  Buch auf Thalia
+              fields.website ? (
+                <a href={fields.website} target="_blank" class="is-size-5 is-underlined">
+                  { fields.book ? "Buch auf Thalia" : fields.website }
                 </a>
-              ) : (
-                <a
-                  href={fields.website}
-                  target="_blank"
-                  class="is-size-5 is-underlined"
-                >
-                  {fields.website}
-                </a>
-              )
+              ) : null
             }
           </div>
           <nav class="level is-mobile mt-6">
