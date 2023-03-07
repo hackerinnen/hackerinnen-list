@@ -4,6 +4,7 @@ import Card from "../components/Card.astro";
 import Filter from "../components/Filter.astro";
 import type { Resource, EnhancedResource } from "../types";
 import { filterData } from "../data/filterData";
+import { sampleData } from "../data/sampleData";
 import Airtable from "airtable";
 import chalk from "chalk";
 
@@ -48,8 +49,13 @@ const fetchData = async () => {
   });
 };
 
-console.log(`${chalk.blue("[airtable]")} Fetch data...`);
-let apiResults = await fetchData();
+let apiResults = [];
+if (import.meta.env.DEV) {
+  apiResults = sampleData;
+} else {
+  console.log(`${chalk.blue("[airtable]")} Fetch data...`);
+  apiResults = await fetchData();
+}
 
 apiResults.filter((result) => result.fields.public);
 
