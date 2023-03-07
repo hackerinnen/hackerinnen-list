@@ -1,5 +1,12 @@
 ---
 import Icon from "./Icon.astro";
+
+export interface NavProps {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props as NavProps;
 ---
 
 <nav class="navbar mt-3" role="navigation" aria-label="main navigation">
@@ -7,15 +14,13 @@ import Icon from "./Icon.astro";
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-hoverable">
         <span class="navbar-link is-arrowless">
-          <span class="title mb-2 is-3">
-            Hackerinnen Links
-          </span>
+          <span class="title mb-2 is-3">{title}</span>
           <figure class="image has-text-primary is-hidden-mobile question-mark">
             <Icon iconName="question-circle" prefix="far" size="1.2em" />
           </figure>
         </span>
-        <div class="navbar-dropdown p-3 is-size-5">
-          Diese Linksammlung soll Initiativen, Projekte und Communities für Frauen in IT sichtbar machen.
+        <div class="navbar-dropdown p-3 is-size-4">
+          {description}
         </div>
       </div>
       <div class="navbar-item is-hidden-mobile is-size-5 ml-4">
