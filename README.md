@@ -45,10 +45,6 @@ Alle Kommandos werden vom Root-Verzeichnet, über den Terminal, ausgeführt:
 | `npm run build`   | Bauen der Webseite für Produktion in `./dist/`         |
 | `npm run preview` | Vorschau der lokal gebauten Webseite, vor dem Deployen |
 
-### Astro Dokumentation
-
-Die Astro Dokumentation findest du [hier](https://docs.astro.build).
-
 ### Nix, Flake, Justfile
 
 Die Dateien `justfile`, `flake.nix`, ... kannst du mit guten Gewissen ignorieren. Diese gehören zu unserem Deployment und werden lokal nicht benötigt.
@@ -58,3 +54,7 @@ Die Dateien `justfile`, `flake.nix`, ... kannst du mit guten Gewissen ignorieren
 Lokal werden Beispieldaten geladen.
 
 In Produktion werden die Inhalte werden von [Airtable](https://airtable.com/) geladen. Dazu muss der Airtable Access Token als Environment Variable `SECRET_AIRTABLE_ACCESS_TOKEN` gesetzt werden.
+
+### Astro Dokumentation
+
+Die Astro Dokumentation findest du [hier](https://docs.astro.build).
