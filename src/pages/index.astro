@@ -2,83 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Filter from "../components/Filter.astro";
-import type { Resource, EnhancedResource } from "../types";
-import { filterData } from "../data/filterData";
-import { sampleData } from "../data/sampleData";
-import Airtable from "airtable";
-import chalk from "chalk";
+import { getEntries } from "../scripts/airtable";
 
-Airtable.configure({
-  endpointUrl: "https://api.airtable.com",
-  apiKey: import.meta.env.SECRET_AIRTABLE_ACCESS_TOKEN,
-});
-
-const base = Airtable.base("appk277pk5PlGpVFt");
-
-const fetchData = async () => {
-  return new Promise<Resource[]>((resolve, reject) => {
-    // https://airtable.com/appk277pk5PlGpVFt/api/docs#curl/table:resources
-    let data: Resource[] = [];
-    base("tblEnh7pNKnZSwgdl")
-      .select({
-        maxRecords: 300,
-        view: "Grid view",
-      })
-      .eachPage(
-        function page(records, fetchNextPage) {
-          // This function (`page`) will get called for each page of records.
-
-          records.forEach(function (record) {
-            data.push(record._rawJson);
-          });
-
-          console.log(`${chalk.blue("[airtable]")} Fetch next page...`);
-          // To fetch the next page of records, call `fetchNextPage`.
-          // If there are more records, `page` will get called again.
-          // If there are no more records, `done` will get called.
-          fetchNextPage();
-        },
-        function done(err) {
-          console.log(`${chalk.blue("[airtable]")} Done fetching data`);
-          if (err) {
-            return reject(err);
-          }
-          return resolve(data);
-        }
-      );
-  });
-};
-
-let apiResults = [];
-if (import.meta.env.DEV) {
-  apiResults = sampleData;
-} else {
-  console.log(`${chalk.blue("[airtable]")} Fetch data...`);
-  apiResults = await fetchData();
+let results = [];
+try {
+  results = await getEntries();
+} catch (error) {
+  console.log(error);
 }
-
-apiResults = apiResults.filter((result) => result.fields.public);
-
-const results = apiResults.map((result): EnhancedResource => {
-  let fields = Object.keys(result.fields);
-  let tags = [];
-  filterData.interests.forEach((item) => {
-    if (result.fields.tags.some((tag) => item.tags.includes(tag))) {
-      tags.push(item.key);
-    }
-  });
-
-  fields = [...fields, ...tags];
-
-  if (result.fields.language) {
-    fields = [...fields, ...result.fields.language];
-  }
-
-  if (result.fields.audience) {
-    fields = [...fields, ...result.fields.audience];
-  }
-  return { ...result, tags: fields };
-});
 ---
 
 <Layout
@@ -86,7 +17,7 @@ const results = apiResults.map((result): EnhancedResource => {
   description="Diese Linksammlung soll Initiativen, Projekte und Communities für Frauen in IT sichtbar machen"
   keywords="Coding-Initiativen finden, Initiativen auf Social Media folgen, YouTube Channels abonnieren, programmieren lernen, Technik verstehen, an Meetups teilnehmen, netzwerken, Hackerinnen kennenlernen, Hackerspaces besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT, FINTA* in Tech, Frauen in IT, Mentorinnen finden, lokale Communities finden, Nachwuchsförderungen, Frauen in der Informatik, fachlicher Austausch, Coding-Bootcamp, Workshops, Mentoring und Nachwuchsförderung für Frauen, Podcasts, Sichtbarkeit von Frauen in IT, Vorbilder"
 >
-  <div class="container is-fullhd py-6 px-2">
+  <div class="container is-fullhd pt-4 pb-6 px-2">
     <div class="columns">
       <div class="column">
         <Filter />
@@ -109,63 +40,3 @@ const results = apiResults.map((result): EnhancedResource => {
     min-height: 80vh;
   }
 </style>
-
-<script>
-  let selectedTags = [];
-  const filterPills = document.querySelectorAll("[data-filter]");
-  const cards = document.getElementsByClassName("card-selector");
-  const selectionContainer = document.getElementById("my-selection-selector");
-
-  const removeSelectionPill = (ele: Element, selectionPill: Node) => {
-    selectedTags = selectedTags.filter(
-      (tag) => tag !== ele.getAttribute("data-filter")
-    );
-    selectionContainer.removeChild(selectionPill);
-    filterCards();
-  };
-
-  const addSelectionPill = (ele: Element) => {
-    // clone pill and add delete button
-    const selectionPill = ele.cloneNode(true);
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete");
-    deleteButton.classList.add("is-small");
-    selectionPill.addEventListener("click", (ele) => {
-      removeSelectionPill(ele.currentTarget as Element, selectionPill);
-    });
-
-    // add selection pill to selection container
-    selectionPill.appendChild(deleteButton);
-    selectionContainer.append(selectionPill);
-  };
-
-  const filterCards = () => {
-    Array.from(cards).forEach((card) => {
-      const cardTags = card.getAttribute("data-tags").split(",");
-      if (
-        selectedTags.length > 0 &&
-        !selectedTags.some((tag) => cardTags.includes(tag))
-      ) {
-        card.classList.add("is-hidden");
-      } else {
-        card.classList.remove("is-hidden");
-      }
-    });
-  };
-
-  filterPills.forEach((pill) => {
-    pill.addEventListener("click", (ele) => {
-      if (
-        !selectedTags.includes(
-          (ele.currentTarget as Element).getAttribute("data-filter")
-        )
-      ) {
-        selectedTags.push(
-          (ele.currentTarget as Element).getAttribute("data-filter")
-        );
-        addSelectionPill(ele.currentTarget as Element);
-        filterCards();
-      }
-    });
-  });
-</script>
