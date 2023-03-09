@@ -57,7 +57,7 @@ if (import.meta.env.DEV) {
   apiResults = await fetchData();
 }
 
-apiResults.filter((result) => result.fields.public);
+apiResults = apiResults.filter((result) => result.fields.public);
 
 const results = apiResults.map((result): EnhancedResource => {
   let fields = Object.keys(result.fields);
