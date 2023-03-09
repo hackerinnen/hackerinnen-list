@@ -164,6 +164,30 @@ const { fields, tags } = Astro.props as CardProps;
                 </a>
               ) : null
             }
+            {
+              fields.linkedin ? (
+                <a
+                  href={fields.linkedin}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="linkedin"
+                >
+                  <Icon iconName="linkedin" prefix="fab" />
+                </a>
+              ) : null
+            }
+            {
+              fields.discord ? (
+                <a
+                  href={fields.discord}
+                  target="_blank"
+                  class="level-item icon"
+                  aria-label="discord"
+                >
+                  <Icon iconName="discord" prefix="fab" />
+                </a>
+              ) : null
+            }
           </div>
         </nav>
       </article>

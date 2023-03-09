@@ -165,6 +165,14 @@ export const filterData = {
         prefix: "fab",
       },
     },
+    {
+      key: "discord",
+      title: "Discord",
+      icon: {
+        iconName: "discord",
+        prefix: "fab",
+      },
+    },
   ],
   language: [
     { key: "DE", title: "DE" },

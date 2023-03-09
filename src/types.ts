@@ -15,6 +15,8 @@ type ResourceFields = {
   podcast: string;
   telegram: string;
   meetup: string;
+  linkedin: string;
+  discord: string;
   email: string;
   blog: string;
   book: string;
