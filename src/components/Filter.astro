@@ -20,7 +20,7 @@ import Tag from "../components/Tag.astro";
       {
         filterData.interests.map((item) => {
           return (
-            <Tag key={item.key} size="1em">
+            <Tag key={item.key} size="1em" group="tag">
               {item.title}
             </Tag>
           );
@@ -33,7 +33,7 @@ import Tag from "../components/Tag.astro";
       {
         filterData.format.map((item) => {
           return (
-            <Tag key={item.key}>
+            <Tag key={item.key} group="tag">
               <span class="icon mr-1">
                 <Icon
                   iconName={item.icon.iconName}
@@ -55,7 +55,7 @@ import Tag from "../components/Tag.astro";
       {
         filterData.social.map((item) => {
           return (
-            <Tag key={item.key}>
+            <Tag key={item.key} group="tag">
               <span class="icon mr-1">
                 <Icon
                   iconName={item.icon.iconName}
@@ -74,7 +74,11 @@ import Tag from "../components/Tag.astro";
     <div class="tags are-medium">
       {
         filterData.language.map((item) => {
-          return <Tag key={item.key}>{item.title}</Tag>;
+          return (
+            <Tag key={item.key} group="language">
+              {item.title}
+            </Tag>
+          );
         })
       }
     </div>
@@ -85,7 +89,11 @@ import Tag from "../components/Tag.astro";
     <div class="tags are-medium">
       {
         filterData.audience.map((item) => {
-          return <Tag key={item.key}>{item.title}</Tag>;
+          return (
+            <Tag key={item.key} group="audience">
+              {item.title}
+            </Tag>
+          );
         })
       }
     </div>

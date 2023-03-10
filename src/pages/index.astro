@@ -26,7 +26,13 @@ try {
         {
           results.map((result) => {
             return (
-              <Card fields={result.fields} id={result.id} tags={result.tags} />
+              <Card
+                fields={result.fields}
+                id={result.id}
+                tags={result.tags}
+                language={result.language}
+                audience={result.audience}
+              />
             );
           })
         }

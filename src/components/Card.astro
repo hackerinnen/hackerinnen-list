@@ -7,7 +7,12 @@ export interface CardProps extends EnhancedResource {}
 const { fields, tags } = Astro.props as CardProps;
 ---
 
-<div class="box py-6 px-5 card-selector" data-tags={tags}>
+<div
+  class="box py-6 px-5 card-selector"
+  data-tags={tags}
+  data-language={fields.language}
+  data-audience={fields.audience}
+>
   <div class="columns">
     <div class="column is-three-quarters">
       <article class="content">

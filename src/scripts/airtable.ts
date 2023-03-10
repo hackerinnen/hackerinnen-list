@@ -4,6 +4,20 @@ import { filterData } from "../data/filterData";
 import { sampleData } from "../data/sampleData";
 import chalk from "chalk";
 
+const discardedFields = [
+  "name",
+  "public",
+  "brand",
+  "description",
+  "tags",
+  "region",
+  "cities",
+  "language",
+  "audience",
+  "create date",
+  "update date",
+];
+
 Airtable.configure({
   endpointUrl: "https://api.airtable.com",
   apiKey: import.meta.env.SECRET_AIRTABLE_ACCESS_TOKEN,
@@ -58,6 +72,9 @@ const getEntries = async () => {
 
   const results = apiResults.map((result): EnhancedResource => {
     let fields = Object.keys(result.fields);
+
+    fields = fields.filter((field) => !discardedFields.includes(field));
+
     let tags = [];
     filterData.interests.forEach((item) => {
       if (result.fields.tags.some((tag) => item.tags.includes(tag))) {
@@ -67,14 +84,10 @@ const getEntries = async () => {
 
     fields = [...fields, ...tags];
 
-    if (result.fields.language) {
-      fields = [...fields, ...result.fields.language];
-    }
-
-    if (result.fields.audience) {
-      fields = [...fields, ...result.fields.audience];
-    }
-    return { ...result, tags: fields };
+    return {
+      ...result,
+      tags: fields,
+    };
   });
 
   return results;
