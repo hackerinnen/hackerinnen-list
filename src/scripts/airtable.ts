@@ -7,6 +7,7 @@ import chalk from "chalk";
 const discardedFields = [
   "name",
   "public",
+  "new",
   "brand",
   "description",
   "tags",
@@ -60,7 +61,7 @@ const fetchData = async () => {
 };
 
 const getEntries = async () => {
-  let apiResults = [];
+  let apiResults: Resource[] = [];
   if (import.meta.env.DEV) {
     apiResults = sampleData;
   } else {
@@ -70,7 +71,7 @@ const getEntries = async () => {
 
   apiResults = apiResults.filter((result) => result.fields.public);
 
-  const results = apiResults.map((result): EnhancedResource => {
+  let results = apiResults.map((result): EnhancedResource => {
     let fields = Object.keys(result.fields);
 
     fields = fields.filter((field) => !discardedFields.includes(field));
@@ -90,7 +91,10 @@ const getEntries = async () => {
     };
   });
 
-  return results;
+  const newResults = results.filter((result) => result.fields.new);
+  results = results.filter((result) => !result.fields.new);
+
+  return { results, newResults };
 };
 
 export { getEntries };

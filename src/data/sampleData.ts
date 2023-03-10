@@ -1,10 +1,14 @@
-export const sampleData = [
+import { Resource } from "../types";
+
+export const sampleData: Resource[] = [
   {
     id: "123",
     createdTime: "2023-02-21T10:09:32.000Z",
     fields: {
       name: "Test Titel",
       public: true,
+      new: true,
+      brand: "",
       description:
         "Wir bieten Workshops für Frauen an die Lust auf programmieren haben.",
       tags: ["Vorbilder", "Streamer"],
@@ -13,6 +17,17 @@ export const sampleData = [
       instagram: "https://instagram.com/xyza",
       youtube: "http://www.youtube.com/c/xyz",
       twitch: "https://www.twitch.tv/xyz",
+      facebook: "",
+      newsletter: "",
+      tikTok: "",
+      podcast: "",
+      telegram: "",
+      meetup: "",
+      linkedin: "",
+      discord: "",
+      email: "",
+      blog: "",
+      book: "",
       region: "Deutschland",
       cities: [],
       language: ["DE"],
@@ -27,6 +42,8 @@ export const sampleData = [
     fields: {
       name: "Test Titel2",
       public: true,
+      new: false,
+      brand: "",
       description:
         "Wir bieten Workshops für Frauen an die Lust auf programmieren haben.",
       tags: ["Vorbilder", "Streamer"],
@@ -35,6 +52,17 @@ export const sampleData = [
       instagram: "https://instagram.com/xyza",
       youtube: "http://www.youtube.com/c/xyz",
       twitch: "https://www.twitch.tv/xyz",
+      facebook: "",
+      newsletter: "",
+      tikTok: "",
+      podcast: "",
+      telegram: "",
+      meetup: "",
+      linkedin: "",
+      discord: "",
+      email: "",
+      blog: "",
+      book: "",
       region: "Deutschland",
       cities: [],
       language: ["EN"],

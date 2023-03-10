@@ -2,19 +2,29 @@
 import type { EnhancedResource } from "../types";
 import Icon from "../components/Icon.astro";
 
-export interface CardProps extends EnhancedResource {}
+export interface CardProps extends EnhancedResource {
+  isNew?: boolean;
+}
 
-const { fields, tags } = Astro.props as CardProps;
+const { fields, tags, isNew } = Astro.props as CardProps;
 ---
 
 <div
-  class="box py-6 px-5 card-selector"
+  class:list={[
+    "box py-6 px-5 card-selector",
+    { "has-background-link-light": isNew },
+  ]}
   data-tags={tags}
   data-language={fields.language}
   data-audience={fields.audience}
 >
   <div class="columns">
     <div class="column is-three-quarters">
+      {
+        isNew ? (
+          <div class="has-text-weight-semibold has-text-link">NEW</div>
+        ) : null
+      }
       <article class="content">
         <div>
           <span

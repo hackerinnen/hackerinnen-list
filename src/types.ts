@@ -1,6 +1,7 @@
 type ResourceFields = {
   name: string;
   public: boolean;
+  new: boolean;
   brand: string;
   description: string;
   tags: string[];
@@ -20,7 +21,6 @@ type ResourceFields = {
   email: string;
   blog: string;
   book: string;
-  kids: boolean;
   region: string;
   cities: string[];
   language: string[];

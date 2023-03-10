@@ -4,12 +4,7 @@ import Card from "../components/Card.astro";
 import Filter from "../components/Filter.astro";
 import { getEntries } from "../scripts/airtable";
 
-let results = [];
-try {
-  results = await getEntries();
-} catch (error) {
-  console.log(error);
-}
+let { results, newResults } = await getEntries();
 ---
 
 <Layout
@@ -24,14 +19,28 @@ try {
       </div>
       <div class="column is-two-thirds">
         {
+          newResults.map((result) => {
+            return (
+              <Card
+                isNew
+                fields={result.fields}
+                id={result.id}
+                tags={result.tags}
+                language={result.fields.language}
+                audience={result.fields.audience}
+              />
+            );
+          })
+        }
+        {
           results.map((result) => {
             return (
               <Card
                 fields={result.fields}
                 id={result.id}
                 tags={result.tags}
-                language={result.language}
-                audience={result.audience}
+                language={result.fields.language}
+                audience={result.fields.audience}
               />
             );
           })
