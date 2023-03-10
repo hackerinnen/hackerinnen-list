@@ -62,7 +62,7 @@ const { fields, tags, isNew } = Astro.props as CardProps;
             {
               fields.youtube ? (
                 <a
-                  href="fields.youtube"
+                  href={fields.youtube}
                   target="_blank"
                   class="level-item icon"
                   aria-label="youtube"
@@ -74,7 +74,7 @@ const { fields, tags, isNew } = Astro.props as CardProps;
             {
               fields.twitch ? (
                 <a
-                  href="fields.twitch"
+                  href={fields.twitch}
                   target="_blank"
                   class="level-item icon"
                   aria-label="twitch"
