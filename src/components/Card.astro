@@ -219,6 +219,15 @@ const { fields, tags, isNew } = Astro.props as CardProps;
             );
           })
         }
+        {
+          fields.cities.map((city) => {
+            return (
+              <p class="tag is-medium is-family-monospace is-light mb-2 ml-2">
+                {city}
+              </p>
+            );
+          })
+        }
       </div>
     </div>
   </div>

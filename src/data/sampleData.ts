@@ -29,7 +29,7 @@ export const sampleData: Resource[] = [
       blog: "",
       book: "",
       region: "Deutschland",
-      cities: [],
+      cities: ["Berlin", "Leipzig"],
       language: ["DE"],
       audience: ["kids"],
       "create date": "2021-02-12",
