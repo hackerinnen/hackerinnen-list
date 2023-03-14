@@ -64,11 +64,18 @@ export const sampleData: Resource[] = [
       blog: "",
       book: "",
       region: "Deutschland",
-      cities: [],
+      cities: ["Leipzig"],
       language: ["EN"],
       audience: ["adults"],
       "create date": "2021-02-12",
       "update date": "2021-02-12",
+    },
+  },
+  {
+    id: "123",
+    createdTime: "2023-02-21T10:09:32.000Z",
+    fields: {
+      public: true,
     },
   },
 ];

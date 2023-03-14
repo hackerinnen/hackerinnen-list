@@ -211,22 +211,24 @@ const { fields, tags, isNew } = Astro.props as CardProps;
       <span class="column-separator is-pulled-left is-hidden-mobile"></span>
       <div class="has-text-right">
         {
-          fields.tags.map((tag) => {
-            return (
-              <p class="tag is-medium is-family-monospace is-light mb-2 ml-2">
-                {tag}
-              </p>
-            );
-          })
+          fields.tags &&
+            fields.tags.map((tag) => {
+              return (
+                <p class="tag is-medium is-family-monospace is-light mb-2 ml-2">
+                  {tag}
+                </p>
+              );
+            })
         }
         {
-          fields.cities.map((city) => {
-            return (
-              <p class="tag is-medium is-family-monospace is-light mb-2 ml-2">
-                {city}
-              </p>
-            );
-          })
+          fields.cities &&
+            fields.cities.map((city) => {
+              return (
+                <p class="tag is-medium is-family-monospace is-light has-background-warning-light mb-2 ml-2">
+                  {city}
+                </p>
+              );
+            })
         }
       </div>
     </div>

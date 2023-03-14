@@ -65,8 +65,14 @@ const getEntries = async () => {
   if (import.meta.env.DEV) {
     apiResults = sampleData;
   } else {
-    console.log(`${chalk.blue("[airtable]")} Fetch data...`);
-    apiResults = await fetchData();
+    try {
+      console.log(`${chalk.blue("[airtable]")} Fetch data...`);
+      apiResults = await fetchData();
+    } catch (error) {
+      console.log(
+        `${chalk.blue("[airtable]")} Failed to fetch data with error ${error}`
+      );
+    }
   }
 
   apiResults = apiResults.filter((result) => result.fields.public);
@@ -78,7 +84,10 @@ const getEntries = async () => {
 
     let tags = [];
     filterData.interests.forEach((item) => {
-      if (result.fields.tags.some((tag) => item.tags.includes(tag))) {
+      if (
+        result.fields.tags &&
+        result.fields.tags.some((tag) => item.tags.includes(tag))
+      ) {
         tags.push(item.key);
       }
     });
