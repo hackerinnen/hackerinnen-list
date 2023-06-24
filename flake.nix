@@ -16,7 +16,7 @@
         # build sandbox. Therefore the package is not the static website
         # itself, but a script building the website. We still try to minimize
         # side effects outside our build directory.
-        packages.default = pkgs.writeShellApplication {
+        packages.build = pkgs.writeShellApplication {
           name = "build-hackerinnen-website";
           runtimeInputs = [ node ];
           text = ''
