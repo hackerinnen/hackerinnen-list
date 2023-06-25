@@ -1,0 +1,27 @@
+pipeline:
+  prepare-env:
+    image: nullaufeins/build-agent
+    commands:
+      - export SITE="connect.hackerinnen.space"
+      - echo "export SITE=$SITE" > pipeline.env
+      - cat pipeline.env
+
+  build:
+    image: nullaufeins/build-agent
+    commands:
+      - source ./pipeline.env
+      - export "DEST_DIR=$SITE"
+      - mkdir "$DEST_DIR"
+      - nix run .#build -- "$DEST_DIR"
+      - nix-store --add "$DEST_DIR" --store "ssh-ng://$BUILD_HOST" > store_path
+    secrets:
+      - source: airtable_access_token
+        target: secret_airtable_access_token
+
+  deploy:
+    image: nullaufeins/build-agent
+    commands:
+      - source ./pipeline.env
+      - cat store_path | xargs deploy-website "$SITE"
+
+branches: [ main ]
