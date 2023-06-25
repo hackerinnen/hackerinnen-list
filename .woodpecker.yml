@@ -24,4 +24,4 @@ pipeline:
       - source ./pipeline.env
       - cat store_path | xargs deploy-website "$SITE"
 
-branches: [ main, woodpecker ]
+branches: [ main ]
