@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Filter from "../components/Filter.astro";
+import { getEntries } from "../scripts/airtable";
+
+let { results, newResults } = await getEntries();
+---
+
+<Layout
+  title="Hackerinnen List"
+  description="Diese Linksammlung soll Initiativen, Projekte und Communities für Frauen in IT sichtbar machen"
+  keywords="Coding-Initiativen finden, Initiativen auf Social Media folgen, YouTube Channels abonnieren, programmieren lernen, Technik verstehen, an Meetups teilnehmen, netzwerken, Hackerinnen kennenlernen, Hackerspaces besuchen, Newsletter abonnieren, vernetzen, Frauen und Technik, MINT, FINTA* in Tech, Frauen in IT, Mentorinnen finden, lokale Communities finden, Nachwuchsförderungen, Frauen in der Informatik, fachlicher Austausch, Coding-Bootcamp, Workshops, Mentoring und Nachwuchsförderung für Frauen, Podcasts, Sichtbarkeit von Frauen in IT, Vorbilder"
+>
+  <div class="container is-fullhd pt-4 pb-6 px-2">
+    <div class="columns">
+      <div class="column">
+        <Filter />
+      </div>
+      <div class="column is-two-thirds" data-testid="cards">
+        {
+          newResults.map((result) => {
+            return (
+              <Card
+                isNew
+                fields={result.fields}
+                id={result.id}
+                tags={result.tags}
+                language={result.fields.language}
+                audience={result.fields.audience}
+              />
+            );
+          })
+        }
+        {
+          results.map((result) => {
+            return (
+              <Card
+                fields={result.fields}
+                id={result.id}
+                tags={result.tags}
+                language={result.fields.language}
+                audience={result.fields.audience}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .container {
+    min-height: 80vh;
+  }
+</style>
