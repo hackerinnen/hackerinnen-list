@@ -38,12 +38,13 @@ Alle Kommandos werden vom Root-Verzeichnet, über den Terminal, ausgeführt.
 
 Alle Kommandos werden vom Root-Verzeichnet, über den Terminal, ausgeführt:
 
-| Command           | Action                                                 |
-| :---------------- | :----------------------------------------------------- |
-| `npm install`     | Installieren der NPM-Pakete                            |
-| `npm run dev`     | Starten des lokalen Dev-Servers unter `localhost:3000` |
-| `npm run build`   | Bauen der Webseite für Produktion in `./dist/`         |
-| `npm run preview` | Vorschau der lokal gebauten Webseite, vor dem Deployen |
+| Command            | Action                                                 |
+| :----------------- | :----------------------------------------------------- |
+| `npm install`      | Installieren der NPM-Pakete                            |
+| `npm run dev`      | Starten des lokalen Dev-Servers unter `localhost:3000` |
+| `npm run build`    | Bauen der Webseite für Produktion in `./dist/`         |
+| `npm run preview`  | Vorschau der lokal gebauten Webseite, vor dem Deployen |
+| `npm run test:e2e` | End to end test laufen lassen                          |
 
 ### Nix, Flake, Justfile
 

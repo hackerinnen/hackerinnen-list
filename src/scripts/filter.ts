@@ -26,8 +26,26 @@ const addSelectionPill = (ele: Element) => {
   selectionContainer.append(selectionPill);
 };
 
+const showCards = (cardsArray: Element[]) => {
+  cardsArray.forEach((card) => {
+    card.classList.remove("is-hidden");
+  });
+}
+
+const hideCards = (cardsArray: Element[]) => {
+  cardsArray.forEach((card) => {
+    card.classList.add("is-hidden");
+  });
+}
+
 const filterCards = () => {
-  let cardsArray = Array.from(cards);
+  let allCards = Array.from(cards);
+  let filteredCards = allCards;
+
+  if (selectedTags.length === 0) {
+    showCards(allCards);
+    return
+  }
 
   if (selectedTags.length > 0) {
     const languageSelection = selectedTags.filter((ele) => {
@@ -42,12 +60,8 @@ const filterCards = () => {
       return ele.getAttribute("data-group") === "tag";
     });
 
-    cardsArray.forEach((card) => {
-      card.classList.add("is-hidden");
-    });
-
     if (languageSelection.length > 0) {
-      cardsArray = cardsArray.filter((card) => {
+      filteredCards = allCards.filter((card) => {
         const cardLanguage = card.getAttribute("data-language").split(",");
         return languageSelection.some((tag) =>
           cardLanguage.includes(tag.getAttribute("data-filter"))
@@ -56,7 +70,7 @@ const filterCards = () => {
     }
 
     if (audienceSelection.length > 0) {
-      cardsArray = cardsArray.filter((card) => {
+      filteredCards = filteredCards.filter((card) => {
         const cardAudience = card.getAttribute("data-audience").split(",");
         return audienceSelection.some((tag) =>
           cardAudience.includes(tag.getAttribute("data-filter"))
@@ -65,7 +79,7 @@ const filterCards = () => {
     }
 
     if (tagSelection.length > 0) {
-      cardsArray = cardsArray.filter((card) => {
+      filteredCards = filteredCards.filter((card) => {
         const cardTags = card.getAttribute("data-tags").split(",");
         return tagSelection.some((tag) =>
           cardTags.includes(tag.getAttribute("data-filter"))
@@ -73,9 +87,8 @@ const filterCards = () => {
       });
     }
 
-    cardsArray.forEach((card) => {
-      card.classList.remove("is-hidden");
-    });
+    hideCards(allCards);
+    showCards(filteredCards);
   }
 };
 

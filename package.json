@@ -7,7 +7,8 @@
     "start": "astro check && tsc --noEmit && astro build",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "astro": "^2.0.14"
@@ -17,6 +18,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.11.19",
     "airtable": "^0.11.6",
     "bulma": "^0.9.4",
     "chalk": "^5.2.0",
