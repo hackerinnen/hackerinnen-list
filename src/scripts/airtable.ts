@@ -19,14 +19,14 @@ const discardedFields = [
   "update date",
 ];
 
-Airtable.configure({
-  endpointUrl: "https://api.airtable.com",
-  apiKey: import.meta.env.SECRET_AIRTABLE_ACCESS_TOKEN,
-});
-
-const base = Airtable.base("appk277pk5PlGpVFt");
-
 const fetchData = async () => {
+  Airtable.configure({
+    endpointUrl: "https://api.airtable.com",
+    apiKey: import.meta.env.SECRET_AIRTABLE_ACCESS_TOKEN,
+  });
+
+  const base = Airtable.base("appk277pk5PlGpVFt");
+
   return new Promise<Resource[]>((resolve, reject) => {
     // https://airtable.com/appk277pk5PlGpVFt/api/docs#curl/table:resources
     let data: Resource[] = [];
