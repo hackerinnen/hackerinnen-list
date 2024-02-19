@@ -17,7 +17,7 @@ let { results, newResults } = await getEntries();
       <div class="column">
         <Filter />
       </div>
-      <div class="column is-two-thirds">
+      <div class="column is-two-thirds" data-testid="cards">
         {
           newResults.map((result) => {
             return (
