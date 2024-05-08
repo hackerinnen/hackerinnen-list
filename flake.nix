@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -34,7 +34,7 @@
           name = "hackerinnen-list-node-modules";
           builder = "${npm-install}/bin/npm-install";
           outputHashMode = "recursive";
-          outputHash = "sha256-0hjl9at0YydZetZBgQLzzA/OqBeLXL1nAE8YX/m+7m8=";
+          outputHash = "sha256-3380sssjN1aJ3zxR233VRmi8mwQ5BxD8Bx+OTAb3TSM=";
         };
       in {
         # Building the website requires network access not available in a Nix
