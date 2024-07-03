@@ -8,7 +8,7 @@
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        node = pkgs.nodejs-18_x;
+        node = pkgs.nodejs_22;
         src = pkgs.lib.cleanSource ./.;
 
         packageJson = pkgs.lib.sourceByRegex ./. [
