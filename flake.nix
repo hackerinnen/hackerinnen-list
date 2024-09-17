@@ -34,7 +34,7 @@
           name = "hackerinnen-list-node-modules";
           builder = "${npm-install}/bin/npm-install";
           outputHashMode = "recursive";
-          outputHash = "sha256-3380sssjN1aJ3zxR233VRmi8mwQ5BxD8Bx+OTAb3TSM=";
+          outputHash = "sha256-mYCj67nmXruHZdUL7fd/IxWI4wCf9JDpHms56M2vXWk=";
         };
       in {
         # Building the website requires network access not available in a Nix
